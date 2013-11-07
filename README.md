@@ -1,6 +1,6 @@
 # The official raywenderlich.com Objective-C style guide.
 
-This style guide outlines the coding conventions for raywenderlich.com. 
+This style guide outlines the coding conventions for raywenderlich.com.
 
 ## Introduction
 
@@ -95,10 +95,10 @@ if (user.isHappy) {
 
 Bad:
 ```objc
-if (user.isHappy) 
+if (user.isHappy)
 {
     //Do something
-} 
+}
 else {
     //Do something else
 }
@@ -156,7 +156,9 @@ UIButton *settingsButton;
 UIButton *setBut;
 ```
 
-A two letter prefix (e.g. `RW`) should always be used for class names and constants, however may be omitted for Core Data entity names. Constants should be camel-case with all words capitalized and prefixed by the related class name for clarity.
+A two or three letter prefix should always be used for class names and constants, however may be omitted for Core Data entity names. For any official raywenderlich.com books, starter kits, or tutorials, the prefix 'RW' should be used.
+
+Constants should be camel-case with all words capitalized and prefixed by the related class name for clarity.
 
 **Good:**
 
