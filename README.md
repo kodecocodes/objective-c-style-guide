@@ -1,6 +1,6 @@
 # The official raywenderlich.com Objective-C style guide.
 
-This style guide outlines the coding conventions for raywenderlich.com. 
+This style guide outlines the coding conventions for raywenderlich.com.
 
 ## Introduction
 
@@ -95,10 +95,10 @@ if (user.isHappy) {
 
 Bad:
 ```objc
-if (user.isHappy) 
+if (user.isHappy)
 {
     //Do something
-} 
+}
 else {
     //Do something else
 }
@@ -187,6 +187,8 @@ id varnm;
 ### Underscores
 
 When using properties, instance variables should always be accessed and mutated using `self.`. This means that all properties will be visually distinct, as they will all be prefaced with `self.`. Local variables should not contain underscores.
+
+An exception to this: iniside initializers, the backing instance variable (i.e. _variableName) should be used directly to avoid any potential side effects of the getters/setters.
 
 ## Methods
 
