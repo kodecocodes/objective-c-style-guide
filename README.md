@@ -347,23 +347,36 @@ Private properties should be declared in class extensions (anonymous categories)
 
 ## Booleans
 
-Objective-C uses `YES` and `NO`.  Therefore `true` and `false` should only be used for CoreFoundation, C or C++ code.  Since `nil` resolves to `NO` it is unnecessary to compare it in conditions. Never compare something directly to `YES`, because `YES` is defined to 1 and a `BOOL` can be up to 8 bits.
+Objective-C uses `YES` and `NO`.  Therefore `true` and `false` should only be used for CoreFoundation, C or C++ code.  Never compare something directly to `YES`, because `YES` is defined to 1 and a `BOOL` can be up to 8 bits.
 
 This allows for more consistency across files and greater visual clarity.
 
 **Good:**
 
 ```objc
-if (someObject) {}
-if (![anotherObject boolValue]) {}
+if (someBoolean) {}
+if (![someObject boolValue]) {}
 ```
 
 **Bad:**
 
 ```objc
-if (someObject == nil) {}
-if ([anotherObject boolValue] == NO) {}
+if ([someObject boolValue] == NO) {}
 if (isAwesome == YES) {} // Never do this.
+```
+
+Be explicit about the datatypes you are comparing. Even though `nil` resolves to `NO`, it makes the code clearer if you make it explicit that you are checking for `nil`:
+
+**Good:**
+
+```objc
+if (someObject == nil) {}
+```
+
+**Bad:**
+
+```objc
+if (!someObject) {}
 ```
 
 If the name of a `BOOL` property is expressed as an adjective, the property can omit the “is” prefix but specifies the conventional name for the get accessor, for example:
