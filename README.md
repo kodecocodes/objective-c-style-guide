@@ -38,10 +38,11 @@ Here are some of the documents from Apple that informed the style guide. If some
 
 ## Code Organization
 
-* use `#pragma mark -`s to categorize methods in functional groupings and protocol/delegate implementations following this general structure.
+* use `#pragma mark -` to categorize methods in functional groupings and protocol/delegate implementations following this general structure.
 
 ```objc
 #pragma mark - Lifecycle
+
 - (instancetype)init {}
 - (void)dealloc {}
 - (void)viewDidLoad {}
@@ -161,7 +162,7 @@ A two letter prefix (e.g. `RW`) should always be used for class names and consta
 **Good:**
 
 ```objc
-static const RWTimeInterval RWTutorialViewControllerNavigationFadeAnimationDuration = 0.3;
+static const NSTimeInterval RWTutorialViewControllerNavigationFadeAnimationDuration = 0.3;
 ```
 
 **Bad:**
@@ -192,7 +193,7 @@ When using properties, instance variables should always be accessed and mutated 
 
 In method signatures, there should be a space after the scope (-/+ symbol). There should be a space between the method segments (matching Apple's style).  Always include a keyword and be descriptive with the word before the argument which describes the argument.
 
-**Good:**:
+**Good:**
 ```objc
 - (void)setExampleText:(NSString *)text image:(UIImage *)image;
 - (void)sendAction:(SEL)aSelector to:(id)anObject forAllCells:(BOOL)flag;
@@ -293,7 +294,7 @@ static const CGFloat RWImageThumbnailHeight = 50.0;
 
 ## Enumerated Types
 
-When using `enum`s, it is recommended to use the new fixed underlying type specification because it has stronger type checking and code completion. The SDK now includes a macro to facilitate and encourage use of fixed underlying types — `NS_ENUM()`
+When using `enum`s, it is recommended to use the new fixed underlying type specification because it has stronger type checking and code completion. The SDK now includes a macro to facilitate and encourage use of fixed underlying types: `NS_ENUM()`
 
 **For Example:**
 
@@ -437,9 +438,9 @@ CGFloat width = frame.size.width;
 CGFloat height = frame.size.height;
 ```
 
-##Golden Path
+## Golden Path
 
-When coding with conditionals, the left hand margin of the code should be the "golden" or "happy" path.  That is, don't nest `if` statements.  Multiple return statements are ok.
+When coding with conditionals, the left hand margin of the code should be the "golden" or "happy" path.  That is, don't nest `if` statements.  Multiple return statements are OK.
 
 **Good:**
 
