@@ -111,7 +111,7 @@ else {
 ```
 
 * There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but often there should probably be new methods.
-* `@synthesize` and `@dynamic` should each be declared on new lines in the implementation.
+* Prefer using auto-synthesis. But if necessary, `@synthesize` and `@dynamic` should each be declared on new lines in the implementation.
 * Colon-aligning method invocation should often be avoided.  There are cases where a method signature may have >= 3 colons and colon-aligning makes the code more readable. Please do **NOT** however colon align methods containing blocks because Xcode's indenting makes it illegible.
 
 Good:
@@ -176,12 +176,12 @@ static const RWTimeInterval RWTutorialViewControllerNavigationFadeAnimationDurat
 static const NSTimeInterval fadetime = 1.7;
 ```
 
-Properties should be camel-case with the leading word being lowercase. **If Xcode can automatically synthesize the variable, then let it.** Otherwise, in order to be consistent, the backing instance variables for these properties should be camel-case with the leading word being lowercase and a leading underscore. This is the same format as Xcode's default synthesis.
+Properties should be camel-case with the leading word being lowercase. Use auto-synthesis for properties rather than manual @synthesize statements unless you have good reason.
 
 **Good:**
 
 ```objc
-@synthesize descriptiveVariableName = _descriptiveVariableName;
+@property (nonatomic, strong) NSString *descriptiveVariableName;
 ```
 
 **Bad:**
@@ -307,7 +307,7 @@ When using `enum`s, it is recommended to use the new fixed underlying type speci
 typedef NS_ENUM(NSInteger, RWLeftMenuTopItemType) {
     RWLeftMenuTopItemMain,
     RWLeftMenuTopItemShows,
-	RWLeftMenuTopItemSchedule
+  RWLeftMenuTopItemSchedule
 };
 ```
 
