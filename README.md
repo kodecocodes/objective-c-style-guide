@@ -454,7 +454,7 @@ When coding with conditionals, the left hand margin of the code should be the "g
 
 ```objc
 - (void)someMethod {
-    if ([someOther boolValue]) {;
+    if ([someOther boolValue]) {
         //Do something important
     }
 }
