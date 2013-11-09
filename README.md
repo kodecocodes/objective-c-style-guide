@@ -218,7 +218,7 @@ Property definitions should be used in place of naked instance variables wheneve
 **Good:**
 
 ```objc
-@interface RWTutorial: NSObject
+@interface RWTutorial : NSObject
 
 @property (nonatomic) NSString *tutorialName;
 
@@ -257,7 +257,7 @@ UIApplication.sharedApplication.delegate;
 
 ```objc
 NSArray *names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul"];
-NSDictionary *productManagers = @{@"iPhone" : @"Kate", @"iPad" : @"Kamal", @"Mobile Web" : @"Bill"};
+NSDictionary *productManagers = @{@"iPhone": @"Kate", @"iPad": @"Kamal", @"Mobile Web": @"Bill"};
 NSNumber *shouldUseLiterals = @YES;
 NSNumber *buildingZIPCode = @10018;
 ```
