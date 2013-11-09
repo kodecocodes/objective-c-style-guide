@@ -1,6 +1,6 @@
 # The official raywenderlich.com Objective-C style guide.
 
-This style guide outlines the coding conventions for raywenderlich.com. 
+This style guide outlines the coding conventions for raywenderlich.com.
 
 ## Introduction
 
@@ -81,7 +81,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 
 ## Spacing
 
-* Indent using 4 spaces. Never indent with tabs. Be sure to set this preference in Xcode.
+* Indent using 2 spaces (this conserves space in print and makes line wrapping less likely). Never indent with tabs. Be sure to set this preference in Xcode.
 * Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
 
 Good:
@@ -95,10 +95,10 @@ if (user.isHappy) {
 
 Bad:
 ```objc
-if (user.isHappy) 
+if (user.isHappy)
 {
     //Do something
-} 
+}
 else {
     //Do something else
 }
