@@ -291,7 +291,7 @@ Constants are preferred over in-line string literals or numbers, as they allow f
 **Preferred:**
 
 ```objc
-static NSString * const RWAboutViewControllerCompanyName = @"RayWenderlich.com";
+static const NSString *RWAboutViewControllerCompanyName = @"RayWenderlich.com";
 
 static const CGFloat RWImageThumbnailHeight = 50.0;
 ```
