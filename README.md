@@ -184,7 +184,7 @@ Properties should be camel-case with the leading word being lowercase. Use auto-
 **Preferred:**
 
 ```objc
-@property (nonatomic, strong) NSString *descriptiveVariableName;
+@property (strong, nonatomic) NSString *descriptiveVariableName;
 ```
 
 **Not Preferred:**
@@ -231,7 +231,7 @@ Property definitions should be used in place of naked instance variables wheneve
 ```objc
 @interface RWTutorial : NSObject
 
-@property (nonatomic) NSString *tutorialName;
+@property (strong, nonatomic) NSString *tutorialName;
 
 @end
 ```
@@ -350,9 +350,9 @@ Private properties should be declared in class extensions (anonymous categories)
 ```objc
 @interface RWDetailViewController ()
 
-@property (nonatomic, strong) GADBannerView *googleAdView;
-@property (nonatomic, strong) ADBannerView *iAdView;
-@property (nonatomic, strong) UIWebView *adXWebView;
+@property (strong, nonatomic) GADBannerView *googleAdView;
+@property (strong, nonatomic) ADBannerView *iAdView;
+@property (strong, nonatomic) UIWebView *adXWebView;
 
 @end
 ```
