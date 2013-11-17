@@ -443,6 +443,7 @@ CGFloat x = CGRectGetMinX(frame);
 CGFloat y = CGRectGetMinY(frame);
 CGFloat width = CGRectGetWidth(frame);
 CGFloat height = CGRectGetHeight(frame);
+CGRect frame = CGRectMake(0.0, 0.0, width, height);
 ```
 
 **Not Preferred:**
@@ -454,6 +455,7 @@ CGFloat x = frame.origin.x;
 CGFloat y = frame.origin.y;
 CGFloat width = frame.size.width;
 CGFloat height = frame.size.height;
+CGRect frame = (CGRect){ .origin = CGPointZero, .size = frame.size };
 ```
 
 ## Golden Path
