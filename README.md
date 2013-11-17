@@ -91,7 +91,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * Indent using 2 spaces (this conserves space in print and makes line wrapping less likely). Never indent with tabs. Be sure to set this preference in Xcode.
 * Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
 
-Good:
+Preferred:
 ```objc
 if (user.isHappy) {
     //Do something
@@ -100,7 +100,7 @@ if (user.isHappy) {
 }
 ```
 
-Bad:
+Not Preferred:
 ```objc
 if (user.isHappy)
 {
@@ -115,7 +115,7 @@ else {
 * Prefer using auto-synthesis. But if necessary, `@synthesize` and `@dynamic` should each be declared on new lines in the implementation.
 * Colon-aligning method invocation should often be avoided.  There are cases where a method signature may have >= 3 colons and colon-aligning makes the code more readable. Please do **NOT** however colon align methods containing blocks because Xcode's indenting makes it illegible.
 
-Good:
+Preferred:
 
 ```objc
 // blocks are easily readable
@@ -126,7 +126,7 @@ Good:
 }];
 ```
 
-Bad:
+Not Preferred:
 
 ```objc
 // colon-aligning makes the block indentation hard to read
@@ -151,13 +151,13 @@ Apple naming conventions should be adhered to wherever possible, especially thos
 
 Long, descriptive method and variable names are good.
 
-**Good:**
+**Preferred:**
 
 ```objc
 UIButton *settingsButton;
 ```
 
-**Bad:**
+**Not Preferred:**
 
 ```objc
 UIButton *setBut;
@@ -167,13 +167,13 @@ A two or three letter prefix should always be used for class names and constants
 
 Constants should be camel-case with all words capitalized and prefixed by the related class name for clarity.
 
-**Good:**
+**Preferred:**
 
 ```objc
 static const NSTimeInterval RWTutorialViewControllerNavigationFadeAnimationDuration = 0.3;
 ```
 
-**Bad:**
+**Not Preferred:**
 
 ```objc
 static const NSTimeInterval fadetime = 1.7;
@@ -181,13 +181,13 @@ static const NSTimeInterval fadetime = 1.7;
 
 Properties should be camel-case with the leading word being lowercase. Use auto-synthesis for properties rather than manual @synthesize statements unless you have good reason.
 
-**Good:**
+**Preferred:**
 
 ```objc
 @property (nonatomic, strong) NSString *descriptiveVariableName;
 ```
 
-**Bad:**
+**Not Preferred:**
 
 ```objc
 id varnm;
@@ -203,14 +203,14 @@ An exception to this: iniside initializers, the backing instance variable (i.e. 
 
 In method signatures, there should be a space after the scope (-/+ symbol). There should be a space between the method segments (matching Apple's style).  Always include a keyword and be descriptive with the word before the argument which describes the argument.
 
-**Good:**
+**Preferred:**
 ```objc
 - (void)setExampleText:(NSString *)text image:(UIImage *)image;
 - (void)sendAction:(SEL)aSelector to:(id)anObject forAllCells:(BOOL)flag;
 - (id)viewWithTag:(NSInteger)tag;
 ```
 
-**Bad:**
+**Not Preferred:**
 
 ```objc
 -(void)setT:(NSString *)text i:(UIImage *)image;
@@ -226,7 +226,7 @@ Asterisks indicating pointers belong with the variable, e.g., `NSString *text` n
 
 Property definitions should be used in place of naked instance variables whenever possible. Direct instance variable access should be avoided except in initializer methods (`init`, `initWithCoder:`, etc…), `dealloc` methods and within custom setters and getters. For more information on using Accessor Methods in Initializer Methods and dealloc, see [here](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmPractical.html#//apple_ref/doc/uid/TP40004447-SW6).
 
-**Good:**
+**Preferred:**
 
 ```objc
 @interface RWTutorial : NSObject
@@ -236,7 +236,7 @@ Property definitions should be used in place of naked instance variables wheneve
 @end
 ```
 
-**Bad:**
+**Not Preferred:**
 
 ```objc
 @interface RWTutorial : NSObject {
@@ -248,13 +248,13 @@ Property definitions should be used in place of naked instance variables wheneve
 
 Dot-notation should **always** be used for accessing and mutating properties. Bracket notation is preferred in all other instances.
 
-**Good:**
+**Preferred:**
 ```objc
 view.backgroundColor = [UIColor orangeColor];
 [UIApplication sharedApplication].delegate;
 ```
 
-**Bad:**
+**Not Preferred:**
 ```objc
 [view setBackgroundColor:[UIColor orangeColor]];
 UIApplication.sharedApplication.delegate;
@@ -264,7 +264,7 @@ UIApplication.sharedApplication.delegate;
 
 `NSString`, `NSDictionary`, `NSArray`, and `NSNumber` literals should be used whenever creating immutable instances of those objects. Pay special care that `nil` values not be passed into `NSArray` and `NSDictionary` literals, as this will cause a crash.
 
-**Good:**
+**Preferred:**
 
 ```objc
 NSArray *names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul"];
@@ -273,7 +273,7 @@ NSNumber *shouldUseLiterals = @YES;
 NSNumber *buildingZIPCode = @10018;
 ```
 
-**Bad:**
+**Not Preferred:**
 
 ```objc
 NSArray *names = [NSArray arrayWithObjects:@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul", nil];
@@ -286,7 +286,7 @@ NSNumber *buildingZIPCode = [NSNumber numberWithInteger:10018];
 
 Constants are preferred over in-line string literals or numbers, as they allow for easy reproduction of commonly used variables and can be quickly changed without the need for find and replace. Constants should be declared as `static` constants and not `#define`s unless explicitly being used as a macro.
 
-**Good:**
+**Preferred:**
 
 ```objc
 static NSString * const RWAboutViewControllerCompanyName = @"RayWenderlich.com";
@@ -294,7 +294,7 @@ static NSString * const RWAboutViewControllerCompanyName = @"RayWenderlich.com";
 static const CGFloat RWImageThumbnailHeight = 50.0;
 ```
 
-**Bad:**
+**Not Preferred:**
 
 ```objc
 #define CompanyName @"RayWenderlich.com"
@@ -329,7 +329,7 @@ typedef NS_ENUM(NSInteger, RWGlobalConstants) {
 
 Older k-style constant definitions should be **avoided** unless writing CoreFoundation C code (unlikely).
 
-**Bad:**
+**Not Preferred:**
 
 ```objc
 enum GlobalConstants {
@@ -361,14 +361,14 @@ Objective-C uses `YES` and `NO`.  Therefore `true` and `false` should only be us
 
 This allows for more consistency across files and greater visual clarity.
 
-**Good:**
+**Preferred:**
 
 ```objc
 if (someObject) {}
 if (![anotherObject boolValue]) {}
 ```
 
-**Bad:**
+**Not Preferred:**
 
 ```objc
 if (someObject == nil) {}
@@ -387,14 +387,14 @@ Text and example taken from the [Cocoa Naming Guidelines](https://developer.appl
 
 Conditional bodies should always use braces even when a conditional body could be written without braces (e.g., it is one line only) to prevent errors. These errors include adding a second line and expecting it to be part of the if-statement. Another, [even more dangerous defect](http://programmers.stackexchange.com/a/16530) may happen where the line "inside" the if-statement is commented out, and the next line unwittingly becomes part of the if-statement. In addition, this style is more consistent with all other conditionals, and therefore more easily scannable.
 
-**Good:**
+**Preferred:**
 ```objc
 if (!error) {
     return success;
 }
 ```
 
-**Bad:**
+**Not Preferred:**
 ```objc
 if (!error)
     return success;
@@ -410,12 +410,12 @@ if (!error) return success;
 
 The Ternary operator, ? , should only be used when it increases clarity or code neatness. A single condition is usually all that should be evaluated. Evaluating multiple conditions is usually more understandable as an if statement, or refactored into instance variables.
 
-**Good:**
+**Preferred:**
 ```objc
 result = a > b ? x : y;
 ```
 
-**Bad:**
+**Not Preferred:**
 ```objc
 result = a > b ? x = c > d ? c : d : y;
 ```
@@ -426,7 +426,7 @@ When accessing the `x`, `y`, `width`, or `height` of a `CGRect`, always use the 
 
 > All functions described in this reference that take CGRect data structures as inputs implicitly standardize those rectangles before calculating their results. For this reason, your applications should avoid directly reading and writing the data stored in the CGRect data structure. Instead, use the functions described here to manipulate rectangles and to retrieve their characteristics.
 
-**Good:**
+**Preferred:**
 
 ```objc
 CGRect frame = self.view.frame;
@@ -437,7 +437,7 @@ CGFloat width = CGRectGetWidth(frame);
 CGFloat height = CGRectGetHeight(frame);
 ```
 
-**Bad:**
+**Not Preferred:**
 
 ```objc
 CGRect frame = self.view.frame;
@@ -452,7 +452,7 @@ CGFloat height = frame.size.height;
 
 When coding with conditionals, the left hand margin of the code should be the "golden" or "happy" path.  That is, don't nest `if` statements.  Multiple return statements are OK.
 
-**Good:**
+**Preferred:**
 
 ```objc
 - (void)someMethod {
@@ -461,7 +461,7 @@ When coding with conditionals, the left hand margin of the code should be the "g
 }
 ```
 
-**Bad:**
+**Not Preferred:**
 
 ```objc
 - (void)someMethod {
@@ -475,7 +475,7 @@ When coding with conditionals, the left hand margin of the code should be the "g
 
 When methods return an error parameter by reference, switch on the returned value, not the error variable.
 
-**Good:**
+**Preferred:**
 ```objc
 NSError *error;
 if (![self trySomethingWithError:&error]) {
@@ -483,7 +483,7 @@ if (![self trySomethingWithError:&error]) {
 }
 ```
 
-**Bad:**
+**Not Preferred:**
 ```objc
 NSError *error;
 [self trySomethingWithError:&error];
@@ -498,7 +498,7 @@ Some of Apple’s APIs write garbage values to the error parameter (if non-NULL)
 
 Image names should be named consistently to preserve organization and developer sanity. They should be named as one camel case string with a description of their purpose, followed by the un-prefixed name of the class or property they are customizing (if there is one), followed by a further description of color and/or placement, and finally their state.
 
-**Good:**
+**Preferred:**
 
 * `RefreshBarButtonItem` / `RefreshBarButtonItem@2x` and `RefreshBarButtonItemSelected` / `RefreshBarButtonItemSelected@2x`
 * `ArticleNavigationBarWhite` / `ArticleNavigationBarWhite@2x` and `ArticleNavigationBarBlackSelected` / `ArticleNavigationBarBlackSelected@2x`.
