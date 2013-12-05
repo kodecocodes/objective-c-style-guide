@@ -258,7 +258,7 @@ UIApplication.sharedApplication.delegate;
 NSArray *names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul"];
 NSDictionary *productManagers = @{@"iPhone": @"Kate", @"iPad": @"Kamal", @"Mobile Web": @"Bill"};
 NSNumber *shouldUseLiterals = @YES;
-NSNumber *buildingZIPCode = @10018;
+NSNumber *buildingStreetNumber = @1018;
 ```
 
 **Not Preferred:**
@@ -267,7 +267,7 @@ NSNumber *buildingZIPCode = @10018;
 NSArray *names = [NSArray arrayWithObjects:@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul", nil];
 NSDictionary *productManagers = [NSDictionary dictionaryWithObjectsAndKeys: @"Kate", @"iPhone", @"Kamal", @"iPad", @"Bill", @"Mobile Web", nil];
 NSNumber *shouldUseLiterals = [NSNumber numberWithBool:YES];
-NSNumber *buildingZIPCode = [NSNumber numberWithInteger:10018];
+NSNumber *buildingStreetNumber = [NSNumber numberWithInteger:1018];
 ```
 
 ## Constants
