@@ -44,46 +44,31 @@ Here are some of the documents from Apple that informed the style guide. If some
 
 ## Code Organization
 
-* use `#pragma mark -` to categorize methods in functional groupings and protocol/delegate implementations following this general structure.
+* use `#pragma mark -` to keep methods semantically related to each other in close proximity to each other. That is, related methods should stay close to each other in the code, and use #pragma options to define how a group of methods are related. Avoid simple grouping the can be easily derived from code such as public, lifecycle, actions, protocols, etc.
+Any object lifecycle methods such as init, dealloc, viewDidLoad, etc, should be at the top of a class in their expected callback order. Dealloc should always be the first method in the class. didReceiveMemoryWarning should be the last method in this 'object creation' group.
+
 
 ```objc
-#pragma mark - Lifecycle
 
-- (instancetype)init {}
 - (void)dealloc {}
+- (instancetype)init {}
+- (id)copyWithZone:(NSZone *)zone {}
 - (void)viewDidLoad {}
 - (void)viewWillAppear:(BOOL)animated {}
 - (void)didReceiveMemoryWarning {}
 
-#pragma mark - Custom Accessors
+- (NSString *)description {}
 
-- (void)setCustomProperty:(id)property {}
-- (id)customProperty {}
-
-#pragma mark - IBActions
+#pragma mark - Calculating Data
 
 - (IBAction)submitData:(id)sender {}
+- (void)reloadData {}
 
-#pragma mark - Public
+#pragma mark - Perform data operations
 
-- (void)publicMethod {}
+- (void)performOperationOnData {}
+- (void)performSimilarOperationOnDataInBackground {}
 
-#pragma mark - Private
-
-- (void)privateMethod {}
-
-#pragma mark - Protocol conformance
-#pragma mark - UITextFieldDelegate
-#pragma mark - UITableViewDataSource
-#pragma mark - UITableViewDelegate
-
-#pragma mark - NSCopying
-
-- (id)copyWithZone:(NSZone *)zone {}
-
-#pragma mark - NSObject
-
-- (NSString *)description {}
 ```
 
 ## Spacing
