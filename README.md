@@ -44,46 +44,31 @@ Here are some of the documents from Apple that informed the style guide. If some
 
 ## Code Organization
 
-* use `#pragma mark -` to categorize methods in functional groupings and protocol/delegate implementations following this general structure.
+* use `#pragma mark -` to keep methods semantically related to each other in close proximity to each other. That is, related methods should stay close to each other in the code, and use #pragma options to define how a group of methods are related. Avoid simple grouping the can be easily derived from code such as public, lifecycle, actions, protocols, etc.
+Any object lifecycle methods such as init, dealloc, viewDidLoad, etc, should be at the top of a class in their expected callback order. Dealloc should always be the first method in the class. didReceiveMemoryWarning should be the last method in this 'object creation' group.
+
 
 ```objc
-#pragma mark - Lifecycle
 
-- (instancetype)init {}
 - (void)dealloc {}
+- (instancetype)init {}
+- (id)copyWithZone:(NSZone *)zone {}
 - (void)viewDidLoad {}
 - (void)viewWillAppear:(BOOL)animated {}
 - (void)didReceiveMemoryWarning {}
 
-#pragma mark - Custom Accessors
+- (NSString *)description {}
 
-- (void)setCustomProperty:(id)property {}
-- (id)customProperty {}
-
-#pragma mark - IBActions
+#pragma mark - Calculating Data
 
 - (IBAction)submitData:(id)sender {}
+- (void)reloadData {}
 
-#pragma mark - Public
+#pragma mark - Perform data operations
 
-- (void)publicMethod {}
+- (void)performOperationOnData {}
+- (void)performSimilarOperationOnDataInBackground {}
 
-#pragma mark - Private
-
-- (void)privateMethod {}
-
-#pragma mark - Protocol conformance
-#pragma mark - UITextFieldDelegate
-#pragma mark - UITableViewDataSource
-#pragma mark - UITableViewDelegate
-
-#pragma mark - NSCopying
-
-- (id)copyWithZone:(NSZone *)zone {}
-
-#pragma mark - NSObject
-
-- (NSString *)description {}
 ```
 
 ## Spacing
@@ -252,13 +237,14 @@ Dot-notation should **always** be used for accessing and mutating properties. Br
 ```objc
 NSInteger arrayCount = [self.array count];
 view.backgroundColor = [UIColor orangeColor];
-[UIApplication sharedApplication].delegate;
+[[UIApplication sharedApplication] delegate];
 ```
 
 **Not Preferred:**
 ```objc
 NSInteger arrayCount = self.array.count;
 [view setBackgroundColor:[UIColor orangeColor]];
+[UIApplication sharedApplication].delegate;
 UIApplication.sharedApplication.delegate;
 ```
 
@@ -272,7 +258,7 @@ UIApplication.sharedApplication.delegate;
 NSArray *names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul"];
 NSDictionary *productManagers = @{@"iPhone": @"Kate", @"iPad": @"Kamal", @"Mobile Web": @"Bill"};
 NSNumber *shouldUseLiterals = @YES;
-NSNumber *buildingZIPCode = @10018;
+NSNumber *buildingStreetNumber = @1018;
 ```
 
 **Not Preferred:**
@@ -281,7 +267,7 @@ NSNumber *buildingZIPCode = @10018;
 NSArray *names = [NSArray arrayWithObjects:@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul", nil];
 NSDictionary *productManagers = [NSDictionary dictionaryWithObjectsAndKeys: @"Kate", @"iPhone", @"Kamal", @"iPad", @"Bill", @"Mobile Web", nil];
 NSNumber *shouldUseLiterals = [NSNumber numberWithBool:YES];
-NSNumber *buildingZIPCode = [NSNumber numberWithInteger:10018];
+NSNumber *buildingStreetNumber = [NSNumber numberWithInteger:1018];
 ```
 
 ## Constants
@@ -343,7 +329,7 @@ enum GlobalConstants {
 
 ## Private Properties
 
-Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `RWPrivate` or `private`) should never be used unless extending another class.
+Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `RWPrivate` or `private`) should never be used unless extending another class. The Anonymous category can be shared/exposed for testing using the <headerfile>+Private.h file naming convention.
 
 **For Example:**
 
@@ -375,7 +361,7 @@ if (![anotherObject boolValue]) {}
 ```objc
 if (someObject == nil) {}
 if ([anotherObject boolValue] == NO) {}
-if (isAwesome == YES) {} // Never do this.
+if (isAwesome == true) {} // Never do this.
 ```
 
 If the name of a `BOOL` property is expressed as an adjective, the property can omit the “is” prefix but specifies the conventional name for the get accessor, for example:
@@ -410,7 +396,7 @@ if (!error) return success;
 
 ### Ternary Operator
 
-The Ternary operator, ? , should only be used when it increases clarity or code neatness. A single condition is usually all that should be evaluated. Evaluating multiple conditions is usually more understandable as an if statement, or refactored into instance variables.  
+The Ternary operator, ? , should only be used when it increases clarity or code neatness. A single condition is usually all that should be evaluated. Evaluating multiple conditions is usually more understandable as an if statement, or refactored into instance variables.  In general, the best use of the ternary operator is during assignment of a variable and deciding which value to use.
 
 Non-boolean variables should be compared against something, and parentheses are added for improved readability.  If the variable being compared is a boolean type, then no parentheses are needed.
 
