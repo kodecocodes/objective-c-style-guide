@@ -46,6 +46,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Error handling](#error-handling)
 * [Image Naming](#image-naming)
 * [Singletons](#singletons)
+* [Line Breaks](#line-breaks)
 * [Xcode Project](#xcode-project)
 
 
@@ -639,6 +640,22 @@ Singleton objects should use a thread-safe pattern for creating their shared ins
 }
 ```
 This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.blogspot.com/2011/04/singletons-your-doing-them-wrong.html).
+
+
+## Line Breaks
+
+Line breaks are an important topic since this style guide is focused for print and online readability.
+
+For example:
+```objc
+self.productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers];
+```
+A long line of code like this should be carried on to the second line adhering to this style guide's Spacing section (two spaces).
+```objc
+self.productsRequest = [[SKProductsRequest alloc] 
+  initWithProductIdentifiers:productIdentifiers];
+```
+
 
 ## Xcode project
 
