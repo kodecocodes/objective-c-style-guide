@@ -41,6 +41,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Booleans](#booleans)
 * [Conditionals](#conditionals)
   * [Ternary Operator](#ternary-operator)
+* [Init Methods](#init-methods)
 * [CGRect Functions](#cgrect-functions)
 * [Golden Path](#golden-path)
 * [Error handling](#error-handling)
@@ -537,6 +538,22 @@ result = a ? x : y;
 ```objc
 result = a > b ? x = c > d ? c : d : y;
 ```
+
+## Init Methods
+
+Init methods should follow the convention provided by Apple's generated code template.  A return type of 'instancetype' should also be used instead of 'id'.  
+
+```objc
+- (instancetype)init {
+  self = [super init];
+  if (self) {
+    // ...
+  }
+  return self;
+}
+```
+
+More information on instancetype can be found on [NSHipster.com](http://nshipster.com/instancetype/).
 
 ## CGRect Functions
 
