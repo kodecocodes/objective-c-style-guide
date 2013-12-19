@@ -31,6 +31,7 @@ Here are some of the documents from Apple that informed the style guide. If some
   * [Underscores](#underscores)
 * [Methods](#methods)
 * [Variables](#variables)
+* [Property Attributes](#property-attributes)
 * [Dot-Notation Syntax](#dot-notation-syntax)
 * [Literals](#literals)
 * [Constants](#constants)
@@ -218,7 +219,7 @@ id varnm;
 
 When using properties, instance variables should always be accessed and mutated using `self.`. This means that all properties will be visually distinct, as they will all be prefaced with `self.`. Local variables should not contain underscores.
 
-An exception to this: iniside initializers, the backing instance variable (i.e. _variableName) should be used directly to avoid any potential side effects of the getters/setters.
+An exception to this: inside initializers, the backing instance variable (i.e. _variableName) should be used directly to avoid any potential side effects of the getters/setters.
 
 ## Methods
 
@@ -264,6 +265,27 @@ Property definitions should be used in place of naked instance variables wheneve
     NSString *tutorialName;
 }
 ```
+
+
+## Property Attributes
+
+Property attributes should be explicitly listed, and will help new programmers when reading the code.  The order of properties should be storage then atomicity, which is consistent with automatically generated code when connecting UI elements from Interface Builder.
+
+**Preferred:**
+
+```objc
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (strong, nonatomic) NSString *tutorialName;
+```
+
+**Not Preferred:**
+
+```objc
+@property (nonatomic, weak) IBOutlet UIView *containerView;
+@property (nonatomic) NSString *tutorialName;
+```
+
+
 
 ## Dot-Notation Syntax
 
