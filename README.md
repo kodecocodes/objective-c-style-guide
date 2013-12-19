@@ -23,7 +23,8 @@ Here are some of the documents from Apple that informed the style guide. If some
 
 ## Table of Contents
 
-- [Code Organization](#code-organization)
+* [Language](#language)
+* [Code Organization](#code-organization)
 * [Spacing](#spacing)
 * [Comments](#comments)
 * [Naming](#naming)
@@ -45,6 +46,21 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Image Naming](#image-naming)
 * [Singletons](#singletons)
 * [Xcode Project](#xcode-project)
+
+
+## Language
+
+US English should be used.
+
+Preferred:
+```objc
+UIColor *myColor = [UIColor whiteColor];
+```
+
+Not Preferred:
+```objc
+UIColor *myColour = [UIColor whiteColor];
+```
 
 
 ## Code Organization
