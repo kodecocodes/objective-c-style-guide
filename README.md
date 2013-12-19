@@ -8,6 +8,10 @@ The reason we made this style guide was so that we could keep the code in our bo
 
 This style guide is different from other Objective-C style guides you may see, because the focus is centered on readability for print and the web. Many of the decisions were made with an eye toward conserving space for print, easy legibility, and tutorial writing.
 
+## Credits
+
+The creation of this style guide was a collaborative effort from various raywenderlich.com team members under the direction of Nicholas Waynik.  The team includes: Soheil Moayedi Azarpour, Ricardo Rendon Cepeda, Tony Dahbura, Colin Eberhardt, Matt Galloway, Greg Heo, Matthijs Hollemans, Christopher LaPollo, Saul Mora, Andy Pereira, Mic Pringle, Pietro Rea, Cesare Rocchi, Nicholas Waynik, and Ray Wenderlich  
+
 ## Background
 
 Here are some of the documents from Apple that informed the style guide. If something isn't mentioned here, it's probably covered in great detail in one of these:
