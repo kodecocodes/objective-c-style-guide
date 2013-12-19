@@ -34,6 +34,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Literals](#literals)
 * [Constants](#constants)
 * [Enumerated Types](#enumerated-types)
+* [Case Statements](#case-statements)
 * [Private Properties](#private-properties)
 * [Booleans](#booleans)
 * [Conditionals](#conditionals)
@@ -318,7 +319,7 @@ When using `enum`s, it is recommended to use the new fixed underlying type speci
 typedef NS_ENUM(NSInteger, RWLeftMenuTopItemType) {
     RWLeftMenuTopItemMain,
     RWLeftMenuTopItemShows,
-  RWLeftMenuTopItemSchedule
+    RWLeftMenuTopItemSchedule
 };
 ```
 
@@ -342,6 +343,65 @@ enum GlobalConstants {
     kMaxPinSize = 5,
     kMaxPinCount = 500,
 };
+```
+
+
+## Case Statements
+
+Case statements do not required braces, however when a case contains more than one line braces should be added.
+
+```objc
+switch (condition) {
+	case 1:
+		// ...
+		break;
+	case 2: {
+		// ...
+		// Multi-line example using braces
+		break;
+	}
+	case 3:
+		// ...
+		break;
+	default: 
+		// ...
+		break;
+}
+
+```
+
+There are times when the same code can be used for multiple cases, and a fall-through should be used.  A fall-through is the removal of the 'break' statement for a case thus allowing the flow of execution to pass to the next case value.  A fall-through should be commented for coding clarity.
+
+```objc
+switch (condition) {
+	case 1:
+		// ** fall-through! **
+	case 2:
+		// code executed for values 1 and 2
+		break;
+	default: 
+		// ...
+		break;
+}
+
+```
+
+When using an enumerated type for a switch, 'default' is not needed.   For example:
+
+```objc
+RWLeftMenuTopItemType menuType = RWLeftMenuTopItemMain;
+
+switch (menuType) {
+	case RWLeftMenuTopItemMain:
+		// ...
+		break;
+	case RWLeftMenuTopItemShows:
+		// ...
+		break;
+	case RWLeftMenuTopItemSchedule:
+		// ...
+		break;
+}
 ```
 
 
