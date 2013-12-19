@@ -6,7 +6,7 @@ This style guide outlines the coding conventions for raywenderlich.com.
 
 The reason we made this style guide was so that we could keep the code in our books, tutorials, and starter kits nice and consistent - even though we have many different authors working on the books.
 
-This style guide is different from other Objective-C style guides you may see, because the focus is centered on readibility for print and the web. Many of the decisions were made with an eye toward conserving space for print, easy legibility, and tutorial writing.
+This style guide is different from other Objective-C style guides you may see, because the focus is centered on readability for print and the web. Many of the decisions were made with an eye toward conserving space for print, easy legibility, and tutorial writing.
 
 ## Background
 
