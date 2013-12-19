@@ -376,6 +376,7 @@ if (![anotherObject boolValue]) {}
 if (someObject == nil) {}
 if ([anotherObject boolValue] == NO) {}
 if (isAwesome == YES) {} // Never do this.
+if (isAwesome == true) {} // Never do this.
 ```
 
 If the name of a `BOOL` property is expressed as an adjective, the property can omit the “is” prefix but specifies the conventional name for the get accessor, for example:
