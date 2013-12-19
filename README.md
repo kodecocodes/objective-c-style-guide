@@ -47,6 +47,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Image Naming](#image-naming)
 * [Singletons](#singletons)
 * [Line Breaks](#line-breaks)
+* [Smiley Face](#smiley-face)
 * [Xcode Project](#xcode-project)
 
 
@@ -655,6 +656,21 @@ A long line of code like this should be carried on to the second line adhering t
 self.productsRequest = [[SKProductsRequest alloc] 
   initWithProductIdentifiers:productIdentifiers];
 ```
+
+
+## Smiley Face
+
+Smiley faces are a very prominent style feature of the raywenderlich.com site!  It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic.  The end square bracket is used because it represents the largest smile able to be captured using ascii art.  A half-hearted smile is represented if an end parenthesis is used, and thus not preferred.
+
+**Preferred:**
+```objc
+:]
+```
+
+**Not Preferred:**
+```objc
+:)
+```  
 
 
 ## Xcode project
