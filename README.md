@@ -118,9 +118,9 @@ UIColor *myColour = [UIColor whiteColor];
 Preferred:
 ```objc
 if (user.isHappy) {
-    //Do something
+  //Do something
 } else {
-    //Do something else
+  //Do something else
 }
 ```
 
@@ -144,9 +144,9 @@ Preferred:
 ```objc
 // blocks are easily readable
 [UIView animateWithDuration:1.0 animations:^{
-    // something
+  // something
 } completion:^(BOOL finished) {
-    // something
+  // something
 }];
 ```
 
@@ -269,7 +269,7 @@ Property definitions should be used in place of naked instance variables wheneve
 
 ```objc
 @interface RWTutorial : NSObject {
-    NSString *tutorialName;
+  NSString *tutorialName;
 }
 ```
 
@@ -362,9 +362,9 @@ When using `enum`s, it is recommended to use the new fixed underlying type speci
 
 ```objc
 typedef NS_ENUM(NSInteger, RWLeftMenuTopItemType) {
-    RWLeftMenuTopItemMain,
-    RWLeftMenuTopItemShows,
-    RWLeftMenuTopItemSchedule
+  RWLeftMenuTopItemMain,
+  RWLeftMenuTopItemShows,
+  RWLeftMenuTopItemSchedule
 };
 ```
 
@@ -372,10 +372,10 @@ You can also make explicit value assignments (showing older k-style constant def
 
 ```objc
 typedef NS_ENUM(NSInteger, RWGlobalConstants) {
-    RWPinSizeMin = 1,
-    RWPinSizeMax = 5,
-    RWPinCountMin = 100,
-    RWPinCountMax = 500,
+  RWPinSizeMin = 1,
+  RWPinSizeMax = 5,
+  RWPinCountMin = 100,
+  RWPinCountMax = 500,
 };
 ```
 
@@ -385,8 +385,8 @@ Older k-style constant definitions should be **avoided** unless writing CoreFoun
 
 ```objc
 enum GlobalConstants {
-    kMaxPinSize = 5,
-    kMaxPinCount = 500,
+  kMaxPinSize = 5,
+  kMaxPinCount = 500,
 };
 ```
 
@@ -397,20 +397,20 @@ Case statements do not required braces, however when a case contains more than o
 
 ```objc
 switch (condition) {
-	case 1:
-		// ...
-		break;
-	case 2: {
-		// ...
-		// Multi-line example using braces
-		break;
-	}
-	case 3:
-		// ...
-		break;
-	default: 
-		// ...
-		break;
+  case 1:
+    // ...
+    break;
+  case 2: {
+    // ...
+    // Multi-line example using braces
+    break;
+  }
+  case 3:
+    // ...
+    break;
+  default: 
+    // ...
+    break;
 }
 
 ```
@@ -419,14 +419,14 @@ There are times when the same code can be used for multiple cases, and a fall-th
 
 ```objc
 switch (condition) {
-	case 1:
-		// ** fall-through! **
-	case 2:
-		// code executed for values 1 and 2
-		break;
-	default: 
-		// ...
-		break;
+  case 1:
+    // ** fall-through! **
+  case 2:
+    // code executed for values 1 and 2
+    break;
+  default: 
+    // ...
+    break;
 }
 
 ```
@@ -437,15 +437,15 @@ When using an enumerated type for a switch, 'default' is not needed.   For examp
 RWLeftMenuTopItemType menuType = RWLeftMenuTopItemMain;
 
 switch (menuType) {
-	case RWLeftMenuTopItemMain:
-		// ...
-		break;
-	case RWLeftMenuTopItemShows:
-		// ...
-		break;
-	case RWLeftMenuTopItemSchedule:
-		// ...
-		break;
+  case RWLeftMenuTopItemMain:
+    // ...
+    break;
+  case RWLeftMenuTopItemShows:
+    // ...
+    break;
+  case RWLeftMenuTopItemSchedule:
+    // ...
+    break;
 }
 ```
 
@@ -502,14 +502,14 @@ Conditional bodies should always use braces even when a conditional body could b
 **Preferred:**
 ```objc
 if (!error) {
-    return success;
+  return success;
 }
 ```
 
 **Not Preferred:**
 ```objc
 if (!error)
-    return success;
+  return success;
 ```
 
 or
@@ -576,8 +576,8 @@ When coding with conditionals, the left hand margin of the code should be the "g
 
 ```objc
 - (void)someMethod {
-    if (![someOther boolValue]) return;
-    //Do something important
+  if (![someOther boolValue]) return;
+  //Do something important
 }
 ```
 
@@ -585,9 +585,9 @@ When coding with conditionals, the left hand margin of the code should be the "g
 
 ```objc
 - (void)someMethod {
-    if ([someOther boolValue]) {
-        //Do something important
-    }
+  if ([someOther boolValue]) {
+    //Do something important
+  }
 }
 ```
 
@@ -599,7 +599,7 @@ When methods return an error parameter by reference, switch on the returned valu
 ```objc
 NSError *error;
 if (![self trySomethingWithError:&error]) {
-    // Handle Error
+  // Handle Error
 }
 ```
 
@@ -608,7 +608,7 @@ if (![self trySomethingWithError:&error]) {
 NSError *error;
 [self trySomethingWithError:&error];
 if (error) {
-    // Handle Error
+  // Handle Error
 }
 ```
 
@@ -630,14 +630,14 @@ Images that are used for a similar purpose should be grouped in respective group
 Singleton objects should use a thread-safe pattern for creating their shared instance.
 ```objc
 + (instancetype)sharedInstance {
-   static id sharedInstance = nil;
+  static id sharedInstance = nil;
 
-   static dispatch_once_t onceToken;
-   dispatch_once(&onceToken, ^{
-      sharedInstance = [[self alloc] init];
-   });
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    sharedInstance = [[self alloc] init];
+  });
 
-   return sharedInstance;
+  return sharedInstance;
 }
 ```
 This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.blogspot.com/2011/04/singletons-your-doing-them-wrong.html).
