@@ -195,13 +195,13 @@ Constants should be camel-case with all words capitalized and prefixed by the re
 **Preferred:**
 
 ```objc
-static const NSTimeInterval RWTutorialViewControllerNavigationFadeAnimationDuration = 0.3;
+static NSTimeInterval const RWTutorialViewControllerNavigationFadeAnimationDuration = 0.3;
 ```
 
 **Not Preferred:**
 
 ```objc
-static const NSTimeInterval fadetime = 1.7;
+static NSTimeInterval const fadetime = 1.7;
 ```
 
 Properties should be camel-case with the leading word being lowercase. Use auto-synthesis for properties rather than manual @synthesize statements unless you have good reason.
@@ -344,9 +344,9 @@ Constants are preferred over in-line string literals or numbers, as they allow f
 **Preferred:**
 
 ```objc
-static const NSString *RWAboutViewControllerCompanyName = @"RayWenderlich.com";
+static NSString * const RWAboutViewControllerCompanyName = @"RayWenderlich.com";
 
-static const CGFloat RWImageThumbnailHeight = 50.0;
+static CGFloat const RWImageThumbnailHeight = 50.0;
 ```
 
 **Not Preferred:**
