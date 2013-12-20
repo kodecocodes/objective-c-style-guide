@@ -394,7 +394,8 @@ enum GlobalConstants {
 
 ## Case Statements
 
-Case statements do not required braces, however when a case contains more than one line braces should be added.
+Braces are not required for case statements, unless enforced by the complier.  
+When a case contains more than one line, braces should be added.
 
 ```objc
 switch (condition) {
