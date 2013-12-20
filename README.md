@@ -56,12 +56,12 @@ Here are some of the documents from Apple that informed the style guide. If some
 
 US English should be used.
 
-Preferred:
+**Preferred:**
 ```objc
 UIColor *myColor = [UIColor whiteColor];
 ```
 
-Not Preferred:
+**Not Preferred:**
 ```objc
 UIColor *myColour = [UIColor whiteColor];
 ```
@@ -116,7 +116,7 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 * Indent using 2 spaces (this conserves space in print and makes line wrapping less likely). Never indent with tabs. Be sure to set this preference in Xcode.
 * Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
 
-Preferred:
+**Preferred:**
 ```objc
 if (user.isHappy) {
   //Do something
@@ -125,7 +125,7 @@ if (user.isHappy) {
 }
 ```
 
-Not Preferred:
+**Not Preferred:**
 ```objc
 if (user.isHappy)
 {
@@ -140,7 +140,7 @@ else {
 * Prefer using auto-synthesis. But if necessary, `@synthesize` and `@dynamic` should each be declared on new lines in the implementation.
 * Colon-aligning method invocation should often be avoided.  There are cases where a method signature may have >= 3 colons and colon-aligning makes the code more readable. Please do **NOT** however colon align methods containing blocks because Xcode's indenting makes it illegible.
 
-Preferred:
+**Preferred:**
 
 ```objc
 // blocks are easily readable
@@ -151,7 +151,7 @@ Preferred:
 }];
 ```
 
-Not Preferred:
+**Not Preferred:**
 
 ```objc
 // colon-aligning makes the block indentation hard to read
