@@ -643,7 +643,7 @@ Image names should be named consistently to preserve organization and developer 
 * `RefreshBarButtonItem` / `RefreshBarButtonItem@2x` and `RefreshBarButtonItemSelected` / `RefreshBarButtonItemSelected@2x`
 * `ArticleNavigationBarWhite` / `ArticleNavigationBarWhite@2x` and `ArticleNavigationBarBlackSelected` / `ArticleNavigationBarBlackSelected@2x`.
 
-Images that are used for a similar purpose should be grouped in respective groups in an Images folder.
+If asset catalogs are not used, images that are used for a similar purpose should be grouped in respective groups in an Images folder.
 
 ## Singletons
 
