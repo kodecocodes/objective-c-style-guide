@@ -82,7 +82,7 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 
 #pragma mark - Custom Accessors
 
-- (void)setCustomProperty:(id)property {}
+- (void)setCustomProperty:(id)value {}
 - (id)customProperty {}
 
 #pragma mark - IBActions
