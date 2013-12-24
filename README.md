@@ -10,7 +10,7 @@ This style guide is different from other Objective-C style guides you may see, b
 
 ## Credits
 
-The creation of this style guide was a collaborative effort from various raywenderlich.com team members under the direction of Nicholas Waynik.  The team includes: Soheil Moayedi Azarpour, Ricardo Rendon Cepeda, Tony Dahbura, Colin Eberhardt, Matt Galloway, Greg Heo, Matthijs Hollemans, Christopher LaPollo, Saul Mora, Andy Pereira, Mic Pringle, Pietro Rea, Cesare Rocchi, Nicholas Waynik, and Ray Wenderlich  
+The creation of this style guide was a collaborative effort from various raywenderlich.com team members under the direction of Nicholas Waynik.  The team includes: Soheil Moayedi Azarpour, Ricardo Rendon Cepeda, Tony Dahbura, Colin Eberhardt, Matt Galloway, Greg Heo, Matthijs Hollemans, Christopher LaPollo, Saul Mora, Andy Pereira, Mic Pringle, Pietro Rea, Cesare Rocchi, Marin Todorov, Nicholas Waynik, and Ray Wenderlich  
 
 ## Background
 
