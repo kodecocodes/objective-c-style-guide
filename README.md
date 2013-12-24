@@ -530,11 +530,11 @@ Non-boolean variables should be compared against something, and parentheses are 
 
 **Preferred:**
 ```objc
-NSInteger a = 5;
-result = (a != 0) ? x : y;
+NSInteger value = 5;
+result = (value != 0) ? x : y;
 
-BOOL a = YES;
-result = a ? x : y;
+BOOL isHorizontal = YES;
+result = isHorizontal ? x : y;
 ```
 
 **Not Preferred:**
