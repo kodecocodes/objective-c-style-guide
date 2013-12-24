@@ -230,7 +230,7 @@ Local variables should not contain underscores.
 
 In method signatures, there should be a space after the method type (-/+ symbol). There should be a space between the method segments (matching Apple's style).  Always include a keyword and be descriptive with the word before the argument which describes the argument.
 
-The usage of the word "and" is reserved.  It should not be used for multiple parameters as illustrated in the initWithWidth:height: example below.
+The usage of the word "and" is reserved.  It should not be used for multiple parameters as illustrated in the `initWithWidth:height:` example below.
 
 **Preferred:**
 ```objc
