@@ -1,6 +1,6 @@
-# The official raywenderlich.com Objective-C style guide.
+# Objective-C style guide.
 
-This style guide outlines the coding conventions for raywenderlich.com.
+This style guide outlines the coding conventions for ELEKS
 
 ## Introduction
 
