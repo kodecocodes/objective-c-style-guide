@@ -2,12 +2,6 @@
 
 This style guide outlines the coding conventions for ELEKS
 
-## Introduction
-
-The reason we made this style guide was so that we could keep the code in our books, tutorials, and starter kits nice and consistent - even though we have many different authors working on the books.
-
-This style guide is different from other Objective-C style guides you may see, because the focus is centered on readability for print and the web. Many of the decisions were made with an eye toward conserving space for print, easy legibility, and tutorial writing.
-
 ## Credits
 
 The creation of this style guide was a collaborative effort from various raywenderlich.com team members under the direction of Nicholas Waynik.  The team includes: Soheil Moayedi Azarpour, Ricardo Rendon Cepeda, Tony Dahbura, Colin Eberhardt, Matt Galloway, Greg Heo, Matthijs Hollemans, Christopher LaPollo, Saul Mora, Andy Pereira, Mic Pringle, Pietro Rea, Cesare Rocchi, Marin Todorov, Nicholas Waynik, and Ray Wenderlich  
