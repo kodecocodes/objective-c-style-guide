@@ -374,7 +374,7 @@ NSNumber *buildingStreetNumber = [NSNumber numberWithInteger:10018];
 
 ## Data Types
 
-Unless using non-Foundation types is necessary we should use Foundation types (like NSUInteger, etc).
+Unless usage of non-Foundation types is necessary we should use Foundation types (like NSUInteger, etc).
 
 **Preferred:**
 
