@@ -2,10 +2,6 @@
 
 This style guide outlines the coding conventions for ELEKS
 
-## Credits
-
-The creation of this style guide was a collaborative effort from various raywenderlich.com team members under the direction of Nicholas Waynik.  The team includes: Soheil Moayedi Azarpour, Ricardo Rendon Cepeda, Tony Dahbura, Colin Eberhardt, Matt Galloway, Greg Heo, Matthijs Hollemans, Christopher LaPollo, Saul Mora, Andy Pereira, Mic Pringle, Pietro Rea, Cesare Rocchi, Marin Todorov, Nicholas Waynik, and Ray Wenderlich  
-
 ## Background
 
 Here are some of the documents from Apple that informed the style guide. If something isn't mentioned here, it's probably covered in great detail in one of these:
@@ -42,6 +38,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Singletons](#singletons)
 * [Smiley Face](#smiley-face)
 * [Xcode Project](#xcode-project)
+* [Credits](#credits)
 
 
 ## Language
@@ -689,3 +686,9 @@ If ours doesn't fit your tastes, have a look at some other style guides:
 * [CocoaDevCentral](http://cocoadevcentral.com/articles/000082.php)
 * [Luke Redpath](http://lukeredpath.co.uk/blog/my-objective-c-style-guide.html)
 * [Marcus Zarra](http://www.cimgf.com/zds-code-style-guide/)
+* 
+
+## Credits
+
+The creation of this style guide was a collaborative effort from various raywenderlich.com team members under the direction of Nicholas Waynik.  The team includes: Soheil Moayedi Azarpour, Ricardo Rendon Cepeda, Tony Dahbura, Colin Eberhardt, Matt Galloway, Greg Heo, Matthijs Hollemans, Christopher LaPollo, Saul Mora, Andy Pereira, Mic Pringle, Pietro Rea, Cesare Rocchi, Marin Todorov, Nicholas Waynik, and Ray Wenderlich  
+
