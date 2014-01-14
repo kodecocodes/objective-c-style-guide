@@ -113,13 +113,14 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 ## Spacing
 
 * Indent using 2 spaces (this conserves space in print and makes line wrapping less likely). Never indent with tabs. Be sure to set this preference in Xcode.
-* Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
+* Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the next line as the statement.
 
 **Preferred:**
 ```objc
 if (user.isHappy) {
   //Do something
-} else {
+} 
+else {
   //Do something else
 }
 ```
@@ -132,7 +133,10 @@ if (user.isHappy)
 }
 else {
     //Do something else
+} else {
+    //Do something else
 }
+
 ```
 
 * There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but often there should probably be new methods.
@@ -187,7 +191,7 @@ UIButton *settingsButton;
 UIButton *setBut;
 ```
 
-A two or three letter prefix should always be used for class names and constants, however may be omitted for Core Data entity names. For any official raywenderlich.com books, starter kits, or tutorials, the prefix 'RW' should be used.
+A two or three letter prefix should always be used for class names and constants, however may be omitted for Core Data entity names.
 
 Constants should be camel-case with all words capitalized and prefixed by the related class name for clarity.
 
@@ -593,7 +597,7 @@ CGRect frame = (CGRect){ .origin = CGPointZero, .size = frame.size };
 
 ## Golden Path
 
-When coding with conditionals, the left hand margin of the code should be the "golden" or "happy" path.  That is, don't nest `if` statements.  Multiple return statements are OK.
+When coding with conditionals, the left hand margin of the code should be the "golden" or "happy" path.  That is, don't nest `if` statements.  Multiple return statements are OK in case when we don't return calculated value.
 
 **Preferred:**
 
@@ -619,7 +623,7 @@ When coding with conditionals, the left hand margin of the code should be the "g
 
 ## Error handling
 
-When methods return an error parameter by reference, switch on the returned value, not the error variable.
+When methods return an error parameter by reference, switch on the returned value, not the error variable. Applicable only if method returns boolean value.
 
 **Preferred:**
 ```objc
@@ -657,21 +661,6 @@ Singleton objects should use a thread-safe pattern for creating their shared ins
 }
 ```
 This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.blogspot.com/2011/04/singletons-your-doing-them-wrong.html).
-
-
-## Line Breaks
-
-Line breaks are an important topic since this style guide is focused for print and online readability.
-
-For example:
-```objc
-self.productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers];
-```
-A long line of code like this should be carried on to the second line adhering to this style guide's Spacing section (two spaces).
-```objc
-self.productsRequest = [[SKProductsRequest alloc] 
-  initWithProductIdentifiers:productIdentifiers];
-```
 
 
 ## Smiley Face
