@@ -26,6 +26,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Property Attributes](#property-attributes)
 * [Dot-Notation Syntax](#dot-notation-syntax)
 * [Literals](#literals)
+* [Data Types](#data-types)
 * [Constants](#constants)
 * [Enumerated Types](#enumerated-types)
 * [Case Statements](#case-statements)
@@ -368,6 +369,30 @@ NSArray *names = [NSArray arrayWithObjects:@"Brian", @"Matt", @"Chris", @"Alex",
 NSDictionary *productManagers = [NSDictionary dictionaryWithObjectsAndKeys: @"Kate", @"iPhone", @"Kamal", @"iPad", @"Bill", @"Mobile Web", nil];
 NSNumber *shouldUseLiterals = [NSNumber numberWithBool:YES];
 NSNumber *buildingStreetNumber = [NSNumber numberWithInteger:10018];
+```
+
+
+## Data Types
+
+Unless using non-Foundation types is necessary we should use Foundation types (like NSUInteger, etc).
+
+**Preferred:**
+
+```objc
+NSUInteger count = [array count];
+CGFloat somePointX = 0.0f;
+CGFloat somePointY = 10.0f;
+CGPoint point = CGPointMake(somePointX, somePointY);
+```
+
+**Not Preferred:**
+
+```objc
+int count = [array count];
+NSUInteger count = [array count];
+double somePointX = 0;
+double somePointY = 10;
+CGPoint point = CGPointMake(somePointX, somePointY);
 ```
 
 ## Constants
