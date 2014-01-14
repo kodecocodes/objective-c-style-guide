@@ -16,6 +16,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Language](#language)
 * [Code Organization](#code-organization)
 * [Spacing](#spacing)
+  * [Operators](#operators)
 * [Comments](#comments)
 * [Naming](#naming)
   * [Underscores](#underscores)
@@ -156,6 +157,24 @@ else {
                  completion:^(BOOL finished) {
                      // something
                  }];
+```
+
+## Operators
+
+Binary operators should be separated from operands by one space. Unary operators should not be separated from operands.
+
+**Preferred:**
+
+```objc
+c = a + b;
+++b;
+```
+
+**Not Preferred:**
+
+```objc
+c=a+b;
+++ b;
 ```
 
 ## Comments
