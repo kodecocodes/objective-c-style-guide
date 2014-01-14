@@ -21,6 +21,7 @@ Here are some of the documents from Apple that informed the style guide. If some
   * [Underscores](#underscores)
 * [Methods](#methods)
 * [Variables](#variables)
+* [Numeric values](#numeric-values)
 * [Property Attributes](#property-attributes)
 * [Dot-Notation Syntax](#dot-notation-syntax)
 * [Literals](#literals)
@@ -271,6 +272,22 @@ Direct access to instance variables that 'back' properties should be avoided exc
 }
 ```
 
+## Numeric Values
+
+If we are using numeric values with floating point (CGFloat or float) it should be written with .0f suffix. If we are using double then we should use only .0 because this constant will be double by default.
+
+**Preferred:**
+
+```objc
+CGRectMake(0.0f, 0.0f, 10.0f, 15.0f)
+```
+
+**Not Preferred:**
+
+```objc
+CGRectMake(0.0, 0.0, 10.0, 15.0)
+CGRectMake(0, 0, 10, 15)
+```
 
 ## Property Attributes
 
