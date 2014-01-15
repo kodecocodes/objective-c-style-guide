@@ -564,7 +564,7 @@ See [Class Constructor Methods](#class-constructor-methods) for link to article 
 
 ## Class Constructor Methods
 
-Where class constructor methods are used, these should __always__ return type of 'instancetype' and ___never___ 'id'. This ensures the compiler correctly infers the result type. 
+Where class constructor methods are used, these should always return type of 'instancetype' and never 'id'. This ensures the compiler correctly infers the result type. 
 
 ```objc
 @interface Airplane
