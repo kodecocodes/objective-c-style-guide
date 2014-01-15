@@ -560,9 +560,11 @@ Init methods should follow the convention provided by Apple's generated code tem
 }
 ```
 
+See [Class Constructor Methods](#class-constructor-methods) for link to article on instancetype.
+
 ## Class Constructor Methods
 
-Where Class constructor methods are used, these should __always__ return type of 'instancetype' and ___never___ 'id'. This ensures the compiler correctly infers the result type. 
+Where class constructor methods are used, these should __always__ return type of 'instancetype' and ___never___ 'id'. This ensures the compiler correctly infers the result type. 
 
 ```objc
 @interface Airplane
