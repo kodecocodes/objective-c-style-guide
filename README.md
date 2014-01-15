@@ -42,6 +42,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Conditionals](#conditionals)
   * [Ternary Operator](#ternary-operator)
 * [Init Methods](#init-methods)
+* [Class Constructor Methods](#class-constructor-methods)
 * [CGRect Functions](#cgrect-functions)
 * [Golden Path](#golden-path)
 * [Error handling](#error-handling)
@@ -547,7 +548,7 @@ result = a > b ? x = c > d ? c : d : y;
 
 ## Init Methods
 
-Init methods should follow the convention provided by Apple's generated code template.  A return type of 'instancetype' should also be used instead of 'id'.  
+Init methods should follow the convention provided by Apple's generated code template.  A return type of 'instancetype' should also be used instead of 'id'.
 
 ```objc
 - (instancetype)init {
@@ -557,6 +558,16 @@ Init methods should follow the convention provided by Apple's generated code tem
   }
   return self;
 }
+```
+
+## Class Constructor Methods
+
+Where Class constructor methods are used, these should __always__ return type of 'instancetype' and ___never___ 'id'. This ensures the compiler correctly infers the result type. 
+
+```objc
+@interface Airplane
++ (instancetype)airplaneWithType:(RWAirplaneType)type;
+@end
 ```
 
 More information on instancetype can be found on [NSHipster.com](http://nshipster.com/instancetype/).
