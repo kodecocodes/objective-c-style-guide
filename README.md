@@ -712,6 +712,7 @@ When possible, always turn on "Treat Warnings as Errors" in the target's Build S
 
 If ours doesn't fit your tastes, have a look at some other style guides:
 
+* [Robots & Pencils](https://github.com/RobotsAndPencils/objective-c-style-guide)
 * [New York Times](https://github.com/NYTimes/objective-c-style-guide)
 * [Google](http://google-styleguide.googlecode.com/svn/trunk/objcguide.xml)
 * [GitHub](https://github.com/github/objective-c-conventions)
