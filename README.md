@@ -29,6 +29,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Data Types](#data-types)
 * [Constants](#constants)
 * [Enumerated Types](#enumerated-types)
+   * [Naming](#enumerated-types-naming)
 * [Case Statements](#case-statements)
 * [Private Properties](#private-properties)
 * [Booleans](#booleans)
@@ -429,14 +430,13 @@ typedef NS_ENUM(NSInteger, RWLeftMenuTopItemType) {
 };
 ```
 
-You can also make explicit value assignments (showing older k-style constant definition):
+You can also make explicit value assignments:
 
 ```objc
-typedef NS_ENUM(NSInteger, RWGlobalConstants) {
-  RWPinSizeMin = 1,
-  RWPinSizeMax = 5,
-  RWPinCountMin = 100,
-  RWPinCountMax = 500,
+typedef NS_ENUM(NSInteger, RWLeftMenuTopItemType) {
+  RWLeftMenuTopItemMain = 1,
+  RWLeftMenuTopItemShows = 50,
+  RWLeftMenuTopItemSchedule = 100
 };
 ```
 
@@ -451,6 +451,27 @@ enum GlobalConstants {
 };
 ```
 
+##enumerated-types-naming
+
+Enum constant names should start with same prefix, which should be equal or based on enum type name.
+
+**Not Preferred:**
+```objc
+typedef NS_ENUM(NSInteger, RWLeftMenuTopItemType) {
+  RWItemMain,
+  RWItemShows,
+  RWItemSchedule
+};
+```
+
+**For Example:**
+```objc
+typedef NS_ENUM(NSInteger, RWLeftMenuTopItemType) {
+  RWLeftMenuTopItemMain,
+  RWLeftMenuTopItemShows,
+  RWLeftMenuTopItemSchedule
+};
+```
 
 ## Case Statements
 
