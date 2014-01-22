@@ -451,7 +451,7 @@ enum GlobalConstants {
 };
 ```
 
-##enumerated-types-naming
+## Enumerated Types Naming
 
 Enum constant names should start with same prefix, which should be equal or based on enum type name.
 
