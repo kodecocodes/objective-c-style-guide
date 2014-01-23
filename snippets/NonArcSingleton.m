@@ -1,8 +1,8 @@
-#import "Singleton.h"
+#import "NonArcSingleton.h"
 
-static Singleton *sharedMyManager = nil;
+static NonArcSingleton *sharedInstance = nil;
 
-@implementation Singleton
+@implementation NonArcSingleton
 
 @synthesize someProperty;
 
