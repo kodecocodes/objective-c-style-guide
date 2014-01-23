@@ -10,7 +10,6 @@ static NonArcSingleton *sharedInstance = nil;
 
 + (instancetype)sharedInstance {
   static dispatch_once_t pred = 0;
-  __strong static id sharedInstance = nil;
   dispatch_once(&pred, ^{
     sharedInstance = [[self alloc] init]; // or some other init method
   });
