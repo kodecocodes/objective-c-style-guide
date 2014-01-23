@@ -4,21 +4,11 @@ This folder contains useful scripts for iOS developers.
 
 ## Table of Contents
 
-* [iOS Application Icons Maker](#appmaker)
+* [iOS Application Icons Maker](#ios_application_icons_maker)
 
 
-## Appmaker
+## iOS Application Icons Maker
 
-US English should be used.
+**Description:**
 
-**Preferred:**
-```objc
-UIColor *myColor = [UIColor whiteColor];
-```
-
-**Not Preferred:**
-```objc
-UIColor *myColour = [UIColor whiteColor];
-```
-
-
+This script produces all icon sizes needed for iOS project from single image.
