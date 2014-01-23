@@ -23,7 +23,7 @@ static ArcSingleton *sharedInstance = nil;
 
 - (instancetype)init {
   if (self = [super init]) {
-      someProperty = [[NSString alloc] initWithString:@"Default Property Value"];
+      self.someProperty = [[NSString alloc] initWithString:@"Default Property Value"];
   }
   return self;
 }
