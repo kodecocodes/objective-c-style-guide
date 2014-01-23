@@ -10,11 +10,11 @@ static ArcSingleton *sharedInstance = nil;
 
 + (instancetype)sharedInstance {
   static dispatch_once_t pred = 0;
-  __strong static id _sharedObject = nil;
+  __strong static id sharedInstance = nil;
   dispatch_once(&pred, ^{
-    _sharedObject = [[self alloc] init]; // or some other init method
+    sharedInstance = [[self alloc] init]; // or some other init method
   });
-  return _sharedObject;
+  return sharedInstance;
 }
 
 
