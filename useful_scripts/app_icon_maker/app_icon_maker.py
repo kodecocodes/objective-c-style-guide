@@ -1,12 +1,14 @@
 #!/usr/bin/python
 
-__author__ = 'ihor.rusin'
+__author__ = 'Ihor Rusin'
+__version__ = 'v0.2'
 
 import argparse
 
 try:
     from PIL import Image
 except ImportError:
+    Image = None
     print('*****\n'
           'Error loading Pillow library.\n'
           'Before using this script you should install Pillow library.\n'
@@ -30,24 +32,24 @@ double_size_postfix = '@2x'
 def process_image(icon_name):
     try:
         prep_icon = Image.open(icon_name)
+
+        width, height = prep_icon.size
+        print 'Processing image: ' + icon_name + '. Image size: ' + repr(width) + 'x' + repr(height)
+
+        for key, value in ios.iteritems():
+            standard_image = prep_icon.resize((value, value), Image.ANTIALIAS)
+            retina_image = prep_icon.resize((value*2, value*2), Image.ANTIALIAS)
+
+            try:
+                standard_image.save(key + '.png', 'PNG')
+                retina_image.save(key + double_size_postfix + '.png', 'PNG')
+            except IOError:
+                print "Error processing image."
+                exit(-1)
+
+        print 'Done.'
     except IOError:
         print "Unable to load image."
-
-    width, height = prep_icon.size
-    print 'Processing image: ' + icon_name + '. Image size: ' + repr(width) + 'x' + repr(height)
-
-    for key, value in ios.iteritems():
-        standard_image = prep_icon.resize((value, value), Image.ANTIALIAS)
-        retina_image = prep_icon.resize((value*2, value*2), Image.ANTIALIAS)
-
-        try:
-            standard_image.save(key + '.png', 'PNG')
-            retina_image.save(key + double_size_postfix + '.png', 'PNG')
-        except IOError:
-            print "Error processing image."
-            exit(-1)
-
-    print 'Done.'
 
 
 def main():
