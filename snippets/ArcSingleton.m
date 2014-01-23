@@ -32,7 +32,6 @@ static ArcSingleton *sharedInstance = nil;
 
 - (void)dealloc {
   // Should never be called, but just here for clarity really.
-  [super dealloc];
 }
 
 @end
