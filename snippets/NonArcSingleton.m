@@ -1,10 +1,5 @@
-#import "NonArcSingleton.h"
 
-static NonArcSingleton *sharedInstance = nil;
-
-@implementation NonArcSingleton
-
-@synthesize someProperty;
+static <#instancetype#> *sharedInstance = nil;
 
 #pragma mark Singleton Methods
 
@@ -44,7 +39,7 @@ static NonArcSingleton *sharedInstance = nil;
 
 - (instancetype)init {
   if (self = [super init]) {
-      self.someProperty = [[NSString alloc] initWithString:@"Default Property Value"];
+  
   }
   return self;
 }
@@ -52,8 +47,7 @@ static NonArcSingleton *sharedInstance = nil;
 
 - (void)dealloc {
   // Should never be called, but just here for clarity really.
-  [someProperty release];
+  
   [super dealloc];
 }
 
-@end
