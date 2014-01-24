@@ -1,10 +1,5 @@
-#import "ArcSingleton.h"
 
-static ArcSingleton *sharedInstance = nil;
-
-@implementation ArcSingleton
-
-@synthesize someProperty;
+static <#instancetype#> *sharedInstance = nil;
 
 #pragma mark Singleton Methods
 
@@ -23,7 +18,7 @@ static ArcSingleton *sharedInstance = nil;
 
 - (instancetype)init {
   if (self = [super init]) {
-      self.someProperty = [[NSString alloc] initWithString:@"Default Property Value"];
+  
   }
   return self;
 }
@@ -32,5 +27,3 @@ static ArcSingleton *sharedInstance = nil;
 - (void)dealloc {
   // Should never be called, but just here for clarity really.
 }
-
-@end
