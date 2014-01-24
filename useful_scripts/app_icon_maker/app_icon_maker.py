@@ -24,6 +24,7 @@ except ImportError:
 ios = {'iTunesArtwork': 512,
        'Icon-29': 29,
        'Icon-40': 40,
+       'Icon-57': 57,
        'Icon-60': 60,
        'Icon-76': 76}
 double_size_postfix = '@2x'
