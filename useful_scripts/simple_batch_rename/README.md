@@ -1,15 +1,15 @@
 # Simple batch file renamer
 
-This script can be useful if your project customer gives you a lot of files with incorrect names.
+This script can be useful if your project customer provides you a lot of files with incorrect names.
 
 ## Description and example
 
-For example, let you have a folder contains Retina graphics for your project.  Each file has name like 'test_image_Retina.png'
+For example, you have a folder contains Retina graphics for your project.  Each file has name like 'test_image_Retina.png'.
 Execute:
 ```
 $ ./simple_batch_rename.py Retina --folder ~/projects/images
 ```
-As result you will get files with removed 'Retina' word from file name in 'renamed_files' subfolder in target directory. '--folder' key is not required. If it key don't set then script will be used own folder.
+As result you will get files with removed 'Retina' word from file name in 'renamed_files' subfolder in target directory. '--folder' key is not required. If '--folder' not presented script will run in it's working folder.
 
 ## Using
 
