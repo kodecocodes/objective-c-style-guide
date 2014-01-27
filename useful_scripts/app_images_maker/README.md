@@ -1,15 +1,15 @@
 # iOS Application Images Maker
 
-This script can be useful if your project customer gives you only Retina images with incorrect filenames. Script generates standard images from you images set and automatically appends '@2x' file postfix to original images.
+This script can be useful if your customer provides you only Retina images with incorrect filenames. Script generates standard images from Retina image set and automatically appends '@2x' file postfix to original images.
 
 ## Description and example
 
-For example, let you have a folder contains Retina graphics for your project. 
+For example, you have a folder contains Retina graphics for your project. 
 Execute:
 ```
 $ ./app_images_maker.py ~/projects/images
 ```
-As result you will get images with standard size which place in 'result' folder with the same path as original images. Also all original images will be duplicated to the same 'result' folder with appended '@2x' postfix. If script will try to process an image with odd width or height then image will be placed in 'conflict' folder and also script will be append '@2x' postfix to file name.
+As result you will get images with standard size which will be placed in 'result' folder with the same path as original images. Also all original images will be copied to the same 'result' folder with '@2x' postfix. If script will try to process an image with odd width or height then image will be placed in 'conflict' folder and also script will be append '@2x' postfix to file name.
 
 ## Using
 
