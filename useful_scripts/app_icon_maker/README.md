@@ -29,16 +29,16 @@ Icon@2x.png
 
 ## Using
 
-You can run this script in two ways:
+You can use this script in two ways:
 
-* First way
+* First:
  
-You can execute this script typed in console:
+You can execute this script by typing in terminal:
 
 ```
 $ ./python app_icon_maker.py ExampleIcon.png
 ```
-* Second way
+* Second:
  
 At first, you should set an execute rights for script
 
@@ -53,7 +53,7 @@ $ ./app_icon_maker.py ExampleIcon.png
 
 ## Installation
 
-This script uses Pillow library for working with images. So, before starting using script you should install Pillow library to your system. As example, on MacOS you should execute in console:
+This script uses Pillow for image processing. So, before starting using script you should install Pillow library to your system. As example, on MacOS you should execute in console:
 ```
 $ sudo pip install Pillow
 ```
