@@ -4,7 +4,7 @@ This script produces all icon sizes needed for iOS project from single image.
 
 ## Description and example
 
-For example, let you have 1024x1024 application icon then you can make with this script all needed icons for iOS project.
+For example, you have 1024x1024 application icon then you can make with this script all needed icons for iOS project.
 Example:
 ```
 $ ./app_icon_maker.py ExampleIcon.png
