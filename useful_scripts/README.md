@@ -6,6 +6,7 @@ This folder contains useful scripts for iOS developers.
 
 * [iOS Application Icons Maker](#ios_application_icons_maker)
 * [iOS Application Images Maker](#ios_application_images_maker)
+* [iOS Application Loading Screens Maker](#ios_application_loading_screens_maker) 
 * [Simple File Renamer](#simple_file_renamer)
 * [Snippets Import](#snippets_import)
 * [iOS Application Localizer](#ios_application_localizer)
@@ -21,6 +22,12 @@ This script produces all icon sizes needed for iOS project from single image.
 **Description:**
 
 This script can be useful if your project customer gives you only Retina images with incorrect filenames. Script generates standard images from you images set and automatically appends '@2x' file postfix.
+
+## iOS Application Loading Screens Maker
+
+**Description:**
+
+This script generates all required loading screens for iPhone and iPad applications from single image with 2048x2048 resolution.
 
 ## Simple File Renamer
 
