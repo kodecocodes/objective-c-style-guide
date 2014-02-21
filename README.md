@@ -317,15 +317,15 @@ Property attributes should be explicitly listed, and will help new programmers w
 **Preferred:**
 
 ```objc
-@property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (strong, nonatomic) NSString *tutorialName;
+@property (nonatomic, weak) IBOutlet UIView *containerView;
+@property (nonatomic, strong) NSString *tutorialName;
 ```
 
 **Not Preferred:**
 
 ```objc
-@property (nonatomic, weak) IBOutlet UIView *containerView;
-@property (nonatomic) NSString *tutorialName;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (strong, nonatomic) NSString *tutorialName;
 ```
 
 
