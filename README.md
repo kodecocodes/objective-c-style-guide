@@ -224,7 +224,7 @@ Properties should be camel-case with the leading word being lowercase. Use auto-
 **Preferred:**
 
 ```objc
-@property (strong, nonatomic) NSString *descriptiveVariableName;
+@property (nonatomic, strong) NSString *descriptiveVariableName;
 ```
 
 **Not Preferred:**
@@ -280,7 +280,7 @@ Direct access to instance variables that 'back' properties should be avoided exc
 ```objc
 @interface RWTutorial : NSObject
 
-@property (strong, nonatomic) NSString *tutorialName;
+@property (nonatomic, strong) NSString *tutorialName;
 
 @end
 ```
@@ -542,9 +542,9 @@ Private properties should be declared in class extensions (anonymous categories)
 ```objc
 @interface RWDetailViewController ()
 
-@property (strong, nonatomic) GADBannerView *googleAdView;
-@property (strong, nonatomic) ADBannerView *iAdView;
-@property (strong, nonatomic) UIWebView *adXWebView;
+@property (nonatomic, strong) GADBannerView *googleAdView;
+@property (nonatomic, strong) ADBannerView *iAdView;
+@property (nonatomic, strong) UIWebView *adXWebView;
 
 @end
 ```
@@ -628,14 +628,28 @@ Init methods should follow the convention provided by Apple's generated code tem
 ```objc
 - (instancetype)init {
   self = [super init];
-  if (self) {
-    // ...
+  if (!self) {
+    return nil;
   }
+  
+  //...
+  
   return self;
 }
 ```
-
 More information on instancetype can be found on [NSHipster.com](http://nshipster.com/instancetype/).
+
+Method new should not be used.
+
+**Preferred:**
+```objc
+NSArray *array = [[NSArray alloc] init];
+```
+
+**Not Preferred:**
+```objc
+NSArray *array = [NSArray new];
+```
 
 ## CGRect Functions
 
