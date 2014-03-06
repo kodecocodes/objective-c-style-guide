@@ -1,4 +1,4 @@
-# The official raywenderlich.com Objective-C style guide.
+﻿# The official raywenderlich.com Objective-C style guide.
 
 This style guide outlines the coding conventions for raywenderlich.com.
 
@@ -31,6 +31,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Comments](#comments)
 * [Naming](#naming)
   * [Underscores](#underscores)
+* [Creating Header Files] (#creating-header-files)
 * [Methods](#methods)
 * [Variables](#variables)
 * [Property Attributes](#property-attributes)
@@ -227,6 +228,23 @@ When using properties, instance variables should always be accessed and mutated 
 An exception to this: inside initializers, the backing instance variable (i.e. _variableName) should be used directly to avoid any potential side effects of the getters/setters.
 
 Local variables should not contain underscores.
+
+## Creating Header Files
+
+Always have the following code in the header file, so that header files in import does not get repeated.
+
+For Example: creating a class named BaseViewController
+
+```objc
+#ifndef BASE_VIEW_CONTROLLER
+#define BASE_VIEW_CONTROLLER
+
+//Interface and Declaration goes here...
+
+#endif
+```
+
+This is because if the file has been expanded already, it will not expand it again!
 
 ## Methods
 
