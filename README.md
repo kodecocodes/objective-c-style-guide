@@ -41,7 +41,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Case Statements](#case-statements)
 * [Private Properties](#private-properties)
 * [Booleans](#booleans)
-* [Categry Method Naming](#category-method-naming)
+* [Category Method Naming](#category-method-naming)
 * [Conditionals](#conditionals)
   * [Ternary Operator](#ternary-operator)
 * [Init Methods](#init-methods)
