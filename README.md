@@ -299,7 +299,20 @@ Property attributes should be explicitly listed, and will help new programmers w
 @property (nonatomic) NSString *tutorialName;
 ```
 
+Properties with mutable counterparts (e.g. NSString) should prefer `copy` instead of `strong`. 
+Why? Even if you declared a property as `NSString` somebody might pass in an instance of an `NSMutableString` and then change it without you noticing that.  
 
+**Preferred:**
+
+```objc
+@property (copy, nonatomic) NSString *tutorialName;
+```
+
+**Not Preferred:**
+
+```objc
+@property (strong, nonatomic) NSString *tutorialName;
+```
 
 ## Dot-Notation Syntax
 
