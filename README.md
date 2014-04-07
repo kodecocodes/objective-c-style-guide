@@ -1,4 +1,4 @@
-# The official raywenderlich.com Objective-C style guide.
+﻿# The official raywenderlich.com Objective-C style guide.
 
 This style guide outlines the coding conventions for raywenderlich.com.
 
@@ -41,6 +41,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Case Statements](#case-statements)
 * [Private Properties](#private-properties)
 * [Booleans](#booleans)
+* [Category Method Naming](#category-method-naming)
 * [Conditionals](#conditionals)
   * [Ternary Operator](#ternary-operator)
 * [Init Methods](#init-methods)
@@ -517,6 +518,24 @@ If the name of a `BOOL` property is expressed as an adjective, the property can 
 @property (assign, getter=isEditable) BOOL editable;
 ```
 Text and example taken from the [Cocoa Naming Guidelines](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/CodingGuidelines/Articles/NamingIvarsAndTypes.html#//apple_ref/doc/uid/20001284-BAJGIIJE).
+
+## Category Method Naming
+
+All category methods must have a prefix. This is to avoid conflicts when a method in two or more categories has the same signature.
+
+**Preferred:**
+
+```objc
+@interface UIButton (HVDAdditions)
++ (UIButton *)HVD_bigRedButton;
+```
+
+**Not Preferred:**
+
+```objc
+@interface UIButton (HVDAdditions)
++ (UIButton *)bigRedButton;
+```
 
 ## Conditionals
 
