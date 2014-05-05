@@ -498,7 +498,7 @@ This allows for more consistency across files and greater visual clarity.
 **Preferred:**
 
 ```objc
-if (someObject) {}
+if (!someObject) {}
 if (![anotherObject boolValue]) {}
 ```
 
