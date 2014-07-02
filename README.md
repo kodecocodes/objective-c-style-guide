@@ -49,6 +49,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Golden Path](#golden-path)
 * [Error handling](#error-handling)
 * [Singletons](#singletons)
+* [Line Length](#line-length)
 * [Line Breaks](#line-breaks)
 * [Smiley Face](#smiley-face)
 * [Xcode Project](#xcode-project)
@@ -686,6 +687,9 @@ Singleton objects should use a thread-safe pattern for creating their shared ins
 ```
 This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.blogspot.com/2011/04/singletons-your-doing-them-wrong.html).
 
+## Line Length
+
+Since Objective-C is a verbose language, the recommended line length is 100 columns. A page guide for column can be set in Xcode preferences, at Text Editing. 
 
 ## Line Breaks
 
@@ -700,6 +704,7 @@ A long line of code like this should be carried on to the second line adhering t
 self.productsRequest = [[SKProductsRequest alloc] 
   initWithProductIdentifiers:productIdentifiers];
 ```
+
 
 
 ## Smiley Face
