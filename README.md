@@ -71,7 +71,8 @@ UIColor *myColour = [UIColor whiteColor];
 
 ## Code Organization
 
-Use `#pragma mark -` to categorize methods in functional groupings and protocol/delegate implementations following this general structure.
+Use `#pragma mark -` to categorize methods in functional groupings and protocol/delegate implementations following this general structure. Methods should be organized logically under their category.  For example, lifecycle methods should be organized according to the order in which they would be called at runtime.
+Use `#pragma mark` to subcategorize methods. This will be used if you have a group of methods which are `private` but also categorically related. Keep in mind, if you have too many methods categorically related, pulling them out into their own class and using Composition might be the best design.
 
 ```objc
 #pragma mark - Lifecycle
@@ -99,6 +100,11 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 
 - (void)privateMethod {}
 
+#pragma mark Currency Calculation
+
+- (void)firstMethodRelatingToCurrency {}
+- (void)secondMethodRelatingToCurrency {}
+
 #pragma mark - Protocol conformance
 #pragma mark - UITextFieldDelegate
 #pragma mark - UITableViewDataSource
@@ -115,7 +121,7 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 
 ## Spacing
 
-* Indent using 2 spaces (this conserves space in print and makes line wrapping less likely). Never indent with tabs. Be sure to set this preference in Xcode.
+* Indent using tabs, which are configured by xcode to 4 spaces by default. 
 * Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
 
 **Preferred:**
@@ -140,8 +146,9 @@ else {
 
 * There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but often there should probably be new methods.
 * Prefer using auto-synthesis. But if necessary, `@synthesize` and `@dynamic` should each be declared on new lines in the implementation.
-* Colon-aligning method invocation should often be avoided.  There are cases where a method signature may have >= 3 colons and colon-aligning makes the code more readable. Please do **NOT** however colon align methods containing blocks because Xcode's indenting makes it illegible.
+* Colon-aligning method invocation should often be avoided.  There are cases where a method signature may have >= 3 colons and colon-aligning makes the code more readable. 
 
+**NOT SURE WHICH ONE YET.  STILL TALKING**
 **Preferred:**
 
 ```objc
@@ -168,8 +175,11 @@ else {
 
 ## Comments
 
-When they are needed, comments should be used to explain **why** a particular piece of code does something. Any comments that are used must be kept up-to-date or deleted.
+When they are needed, comments should be used to explain **why** a particular piece of code does something. Any comments that are used must be kept up-to-date or deleted. 
 
+Do not use a comment or a TODO to signify work remaining to be done. Instead, use `#pragma message("YourName: *link to jira which is tracking this work*")`
+It is important to link to Jira's to be sure the work is eventually completed. Comments alone are often lost in a big project.
+'
 Block comments should generally be avoided, as code should be as self-documenting as possible, with only the need for intermittent, few-line explanations. *Exception: This does not apply to those comments used to generate documentation.*
 
 ## Naming
@@ -192,16 +202,15 @@ UIButton *setBut;
 
 A three letter prefix should always be used for class names and constants, however may be omitted for Core Data entity names. For any official raywenderlich.com books, starter kits, or tutorials, the prefix 'RWT' should be used.
 
-Constants should be camel-case with all words capitalized and prefixed by the related class name for clarity.
+Constants should be camel-case with all words capitalized. If a constant is being exposed publically, it must be prefixed by the related class name for clarity.
 
 **Preferred:**
-
+*If exposed publicly:*
 ```objc
 static NSTimeInterval const RWTTutorialViewControllerNavigationFadeAnimationDuration = 0.3;
 ```
 
-**Not Preferred:**
-
+*If privately declared:*
 ```objc
 static NSTimeInterval const fadetime = 1.7;
 ```
@@ -232,7 +241,7 @@ Local variables should not contain underscores.
 
 In method signatures, there should be a space after the method type (-/+ symbol). There should be a space between the method segments (matching Apple's style).  Always include a keyword and be descriptive with the word before the argument which describes the argument.
 
-The usage of the word "and" is reserved.  It should not be used for multiple parameters as illustrated in the `initWithWidth:height:` example below.
+The usage of the word "and" is reserved.  It should not be used for multiple parameters as illustrated in the `initWithWidth:height:` example below. Contractions like 'and' should never be used, but prepositions like 'with' and 'from' are acceptable in some cases.
 
 **Preferred:**
 ```objc
@@ -254,7 +263,7 @@ The usage of the word "and" is reserved.  It should not be used for multiple par
 
 ## Variables
 
-Variables should be named as descriptively as possible. Single letter variable names should be avoided except in `for()` loops.
+Variables should be named as descriptively as possible. 
 
 Asterisks indicating pointers belong with the variable, e.g., `NSString *text` not `NSString* text` or `NSString * text`, except in the case of constants.
 
@@ -299,7 +308,7 @@ Property attributes should be explicitly listed, and will help new programmers w
 @property (nonatomic) NSString *tutorialName;
 ```
 
-Properties with mutable counterparts (e.g. NSString) should prefer `copy` instead of `strong`. 
+Mutable classes, or classes with mutable subclasses (e.g. NSString) should prefer `copy` instead of `strong`. 
 Why? Even if you declared a property as `NSString` somebody might pass in an instance of an `NSMutableString` and then change it without you noticing that.  
 
 **Preferred:**
@@ -343,8 +352,8 @@ UIApplication.sharedApplication.delegate;
 ```objc
 NSArray *names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul"];
 NSDictionary *productManagers = @{@"iPhone": @"Kate", @"iPad": @"Kamal", @"Mobile Web": @"Bill"};
-NSNumber *shouldUseLiterals = @YES;
-NSNumber *buildingStreetNumber = @10018;
+NSNumber *shouldUseLiterals = @(YES);
+NSNumber *buildingStreetNumber = @(10018);
 ```
 
 **Not Preferred:**
@@ -686,35 +695,6 @@ Singleton objects should use a thread-safe pattern for creating their shared ins
 ```
 This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.blogspot.com/2011/04/singletons-your-doing-them-wrong.html).
 
-
-## Line Breaks
-
-Line breaks are an important topic since this style guide is focused for print and online readability.
-
-For example:
-```objc
-self.productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers];
-```
-A long line of code like this should be carried on to the second line adhering to this style guide's Spacing section (two spaces).
-```objc
-self.productsRequest = [[SKProductsRequest alloc] 
-  initWithProductIdentifiers:productIdentifiers];
-```
-
-
-## Smiley Face
-
-Smiley faces are a very prominent style feature of the raywenderlich.com site!  It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic.  The end square bracket is used because it represents the largest smile able to be captured using ascii art.  A half-hearted smile is represented if an end parenthesis is used, and thus not preferred.
-
-**Preferred:**
-```objc
-:]
-```
-
-**Not Preferred:**
-```objc
-:)
-```  
 
 
 ## Xcode project
