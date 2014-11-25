@@ -331,14 +331,14 @@ Dot-notation should **always** be used for accessing and mutating properties, as
 
 **Preferred:**
 ```objc
-NSInteger arrayCount = [self.array count];
+NSInteger arrayCount = self.array.count;
 view.backgroundColor = [UIColor orangeColor];
 [UIApplication sharedApplication].delegate;
 ```
 
 **Not Preferred:**
 ```objc
-NSInteger arrayCount = self.array.count;
+NSInteger arrayCount = [[self array] count];
 [view setBackgroundColor:[UIColor orangeColor]];
 UIApplication.sharedApplication.delegate;
 ```
@@ -367,27 +367,32 @@ NSNumber *buildingStreetNumber = [NSNumber numberWithInteger:10018];
 
 ## Constants
 
-Constants are preferred over in-line string literals or numbers, as they allow for easy reproduction of commonly used variables and can be quickly changed without the need for find and replace. Constants should be declared as `static` constants and not `#define`s unless explicitly being used as a macro.
+Constants are preferred over in-line string literals or numbers, as they allow for easy reproduction of commonly used variables and can be quickly changed without the need for find and replace. Constants should be declared as `static` or `extern` constants and not `#define`s unless explicitly being used as a macro. Use `static` for file-scoped constants declared in the .m file, and prefix constant name with "k"; use `extern` for declaring global constants in .h files, with accompanying declaration in the .m file, and prefix constant name with associated class name.
 
 **Preferred:**
 
 ```objc
-static NSString * const RWTAboutViewControllerCompanyName = @"RayWenderlich.com";
+static NSString * const kCompanyName = @"Lumosity.com";
 
-static CGFloat const RWTImageThumbnailHeight = 50.0;
+static CGFloat const kImageThumbnailHeight = 50.0;
+
+// in RWTSomeClass.h:
+extern NSString * const RWTSomeClassCompanyName;
+// in RWTSomeClass.m:
+NSString * const RWTSomeClassCompanyName = @"Lumosity.com";
 ```
 
 **Not Preferred:**
 
 ```objc
-#define CompanyName @"RayWenderlich.com"
+#define CompanyName @"Lumosity.com"
 
 #define thumbnailHeight 2
 ```
 
 ## Enumerated Types
 
-When using `enum`s, it is recommended to use the new fixed underlying type specification because it has stronger type checking and code completion. The SDK now includes a macro to facilitate and encourage use of fixed underlying types: `NS_ENUM()`
+When using `enum`s, use the new fixed underlying type specification `NS_ENUM()` because it has stronger type checking and code completion, and enables future interoperability with Swift. If the enum will be used as bitwise flags, use `NS_OPTIONS()` instead.
 
 **For Example:**
 
@@ -397,6 +402,12 @@ typedef NS_ENUM(NSInteger, RWTLeftMenuTopItemType) {
   RWTLeftMenuTopItemShows,
   RWTLeftMenuTopItemSchedule
 };
+
+typedef NS_OPTIONS(NSUInteger, RWTParsingOptions) {
+  RWTParsingOptionVerbose = 1 << 0,
+  RWTParsingOptionAllowFragments = 1 << 1,
+  RWTParsingOptionReverse = 1 << 2
+}
 ```
 
 You can also make explicit value assignments (showing older k-style constant definition):
@@ -463,7 +474,7 @@ switch (condition) {
 
 ```
 
-When using an enumerated type for a switch, 'default' is not needed.   For example:
+When using an enumerated type for a switch, do not include a `default` case. This way, if the enumeration gains more cases in the future, the compiler will create a warning. For example:
 
 ```objc
 RWTLeftMenuTopItemType menuType = RWTLeftMenuTopItemMain;
@@ -484,7 +495,9 @@ switch (menuType) {
 
 ## Private Properties
 
-Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `RWTPrivate` or `private`) should never be used unless extending another class.   The Anonymous category can be shared/exposed for testing using the <headerfile>+Private.h file naming convention.
+Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `RWTPrivate`) should only be used for breaking up a class's implementation along functional lines or for extending classes written by others, and should always have a prefix to avoid naming collisions. 
+
+The Anonymous category can be shared/exposed for testing using the <headerfile>+Private.h file naming convention.
 
 **For Example:**
 
@@ -550,11 +563,36 @@ or
 if (!error) return success;
 ```
 
+### Calling blocks
+
+When writing methods that accept blocks as arguments, always test that the block is not NULL before calling it.
+
+**Preferred:**
+```objc
+- (void)doThingWithBlock:(void (^)(void))aBlock
+{
+  if (aBlock) {
+    aBlock();
+  }
+}
+```
+
+**Not Preferred:**
+```objc
+- (void)doThingWithBlock:(void (^)(void))aBlock
+{
+  aBlock(); // will crash if aBlock is NULL!!
+}
+```
+
+
 ### Ternary Operator
 
 The Ternary operator, `?:` , should only be used when it increases clarity or code neatness. A single condition is usually all that should be evaluated. Evaluating multiple conditions is usually more understandable as an `if` statement, or refactored into instance variables. In general, the best use of the ternary operator is during assignment of a variable and deciding which value to use.
 
-Non-boolean variables should be compared against something, and parentheses are added for improved readability.  If the variable being compared is a boolean type, then no parentheses are needed.
+Non-boolean scalar values should be compared against something, though object variables can be tested for nil implicitly. Parentheses are added for improved readability.  If the variable being compared is a boolean type, then no parentheses are needed.
+
+Testing an object for nil and providing an alternate value can be done without a "true" branch of the ternary. That is: `id object = mightBeNil ?: alternateObject;`
 
 **Preferred:**
 ```objc
@@ -563,6 +601,9 @@ result = (value != 0) ? x : y;
 
 BOOL isHorizontal = YES;
 result = isHorizontal ? x : y;
+
+NSString *aString = someDictionary[someKey];
+return aString ?: [NSNull null];
 ```
 
 **Not Preferred:**
@@ -699,7 +740,7 @@ This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.
 
 ## Xcode project
 
-The physical files should be kept in sync with the Xcode project files in order to avoid file sprawl. Any Xcode groups created should be reflected by folders in the filesystem. Code should be grouped not only by type, but also by feature for greater clarity.
+Organization of files should be handled inside of Xcode. Source and asset files in the filesystem should have a minimal organization and should not try to mirror the Xcode project's group structure. This allows for easy reorganizing of files in Xcode without worrying about the filesystem structure getting out of sync.
 
 When possible, always turn on "Treat Warnings as Errors" in the target's Build Settings and enable as many [additional warnings](http://boredzo.org/blog/archives/2009-11-07/warnings) as possible. If you need to ignore a specific warning, use [Clang's pragma feature](http://clang.llvm.org/docs/UsersManual.html#controlling-diagnostics-via-pragmas).
 
