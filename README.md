@@ -31,6 +31,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Comments](#comments)
 * [Naming](#naming)
   * [Underscores](#underscores)
+  * [Categories](#categories)
 * [Methods](#methods)
 * [Variables](#variables)
 * [Property Attributes](#property-attributes)
@@ -227,6 +228,30 @@ When using properties, instance variables should always be accessed and mutated 
 An exception to this: inside initializers, the backing instance variable (i.e. _variableName) should be used directly to avoid any potential side effects of the getters/setters.
 
 Local variables should not contain underscores.
+
+### Categories
+
+When creating a category on class maintened by third party developer always use three letter prefix in methods names. This way it will not conflict with current or future implementations.
+
+**Preferred:**
+
+```objc
+@interface NSArray (RWTExtension)
+
+- (id)rwt_firstObject;
+
+@end
+```
+
+**Not Preferred:**
+
+```objc
+@interface NSArray (Extension)
+
+- (id)firstObject;
+
+@end
+```
 
 ## Methods
 
