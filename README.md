@@ -501,15 +501,15 @@ Objective-C uses `YES` and `NO`.  Therefore `true` and `false` should only be us
 ```objc
 NSNumber *numberActiveUsers = @10;
 if ([numberActiveUsers boolValue]) {
-//will execute this if branch
+  //will execute this if branch
 }
 
 if ([numberActiveUsers boolValue] == YES) {
-//will execute this if branch
+  //will execute this if branch
 }
 
 if ([numberActiveUsers integerValue] == YES) {
-//will NOT execute this if branch
+  //will NOT execute this if branch
 }
 ```
 
@@ -588,9 +588,7 @@ Init methods should not follow the convention provided by Apple's generated code
 ```objc
 - (instancetype)init {
   self = [super init];
-  if (self) {
-    // ...
-  }
+  //freely use class properties 
   return self;
 }
 ```
