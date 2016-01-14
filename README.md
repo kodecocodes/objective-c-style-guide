@@ -82,6 +82,10 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 - (void)viewWillAppear:(BOOL)animated {}
 - (void)didReceiveMemoryWarning {}
 
+#pragma mark - Fetch data
+
+-  (void)loadData {}
+
 #pragma mark - Custom Accessors
 
 - (void)setCustomProperty:(id)value {}
