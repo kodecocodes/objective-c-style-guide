@@ -1,4 +1,4 @@
-# The official raywenderlich.com Objective-C style guide.
+﻿# The official raywenderlich.com Objective-C style guide.
 
 This style guide outlines the coding conventions for raywenderlich.com.
 
@@ -31,6 +31,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Comments](#comments)
 * [Naming](#naming)
   * [Underscores](#underscores)
+* [Creating Header Files] (#creating-header-files)
 * [Methods](#methods)
 * [Variables](#variables)
 * [Property Attributes](#property-attributes)
@@ -47,6 +48,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Class Constructor Methods](#class-constructor-methods)
 * [CGRect Functions](#cgrect-functions)
 * [Golden Path](#golden-path)
+* [Image Naming](#image-naming)
 * [Error handling](#error-handling)
 * [Singletons](#singletons)
 * [Line Breaks](#line-breaks)
@@ -227,6 +229,23 @@ When using properties, instance variables should always be accessed and mutated 
 An exception to this: inside initializers, the backing instance variable (i.e. _variableName) should be used directly to avoid any potential side effects of the getters/setters.
 
 Local variables should not contain underscores.
+
+## Creating Header Files
+
+Always have the following code in the header file, so that header files in import does not get repeated.
+
+For Example: creating a class named BaseViewController
+
+```objc
+#ifndef BASE_VIEW_CONTROLLER
+#define BASE_VIEW_CONTROLLER
+
+//Interface and Declaration goes here...
+
+#endif
+```
+
+This is because if the file has been expanded already, it will not expand it again!
 
 ## Methods
 
@@ -644,6 +663,14 @@ When coding with conditionals, the left hand margin of the code should be the "g
   }
 }
 ```
+## Image Naming
+
+Image names should be named consistently to preserve organization and developer sanity. They should be named as one camel case string with a description of their purpose, followed by the un-prefixed name of the class or property they are customizing (if there is one), followed by a further description of color and/or placement, and finally their state.
+
+For example:
+
+`RefreshBarButtonItem` / `RefreshBarButtonItem@2x` and `RefreshBarButtonItemSelected` / `RefreshBarButtonItemSelected@2x`
+`ArticleNavigationBarWhite` / `ArticleNavigationBarWhite@2x` and `ArticleNavigationBarBlackSelected` / `ArticleNavigationBarBlackSelected@2x`.
 
 ## Error handling
 
