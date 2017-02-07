@@ -43,6 +43,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Booleans](#booleans)
 * [Conditionals](#conditionals)
   * [Ternary Operator](#ternary-operator)
+  * [If-Else Operator]
 * [Init Methods](#init-methods)
 * [Class Constructor Methods](#class-constructor-methods)
 * [CGRect Functions](#cgrect-functions)
@@ -559,6 +560,32 @@ result = isHorizontal ? x : y;
 **Not Preferred:**
 ```objc
 result = a > b ? x = c > d ? c : d : y;
+```
+
+### If-Else
+
+The if-else conditional should be used when having to perform different sets of actions depending on an evaluation. During the evaluation seems clearer to implement positive questions, i.e without the use of the `not` (`!`) operator.
+
+**Preferred:**
+
+```objc
+if (error) {
+  // Do something
+} else {
+  // Do something else
+}
+
+```
+
+**Not Preferred:**
+
+```objc
+if (!error) {
+  // Do something
+} else {
+  // Do something else
+}
+
 ```
 
 ## Init Methods
