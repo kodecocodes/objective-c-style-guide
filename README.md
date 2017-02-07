@@ -564,7 +564,7 @@ result = a > b ? x = c > d ? c : d : y;
 
 ### If-Else
 
-The if-else conditional should be used when having to perform different sets of actions depending on an evaluation. During the evaluation seems clearer to implement positive questions, i.e without the use of the `not` (`!`) operator.
+The if-else conditional should be used when having to perform different sets of actions depending on an evaluation. During the evaluation seems clearer to implement positive statements, i.e without the use of the `not` (`!`) operator.
 
 **Preferred:**
 
