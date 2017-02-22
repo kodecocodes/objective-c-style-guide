@@ -1,12 +1,10 @@
-# The official raywenderlich.com Objective-C style guide.
+# Derived from the official raywenderlich.com Objective-C style guide.
 
-This style guide outlines the coding conventions for raywenderlich.com.
+This style guide outlines the coding conventions for our team.
 
 ## Introduction
 
 The reason we made this style guide was so that we could keep the code in our books, tutorials, and starter kits nice and consistent - even though we have many different authors working on the books.
-
-This style guide is different from other Objective-C style guides you may see, because the focus is centered on readability for print and the web. Many of the decisions were made with an eye toward conserving space for print, easy legibility, and tutorial writing.
 
 ## Credits
 
@@ -117,44 +115,50 @@ Use `// MARK:` to categorize methods in functional groupings and protocol/delega
 
 ## Spacing
 
-* Indent using 2 spaces (this conserves space in print and makes line wrapping less likely). Never indent with tabs. Be sure to set this preference in Xcode.
+* Indent using 2 spaces (this conserves space in print and makes line wrapping less likely). Be sure to set this preference in Xcode.
 * Method braces always open on next line to visually distinguish method body.
 * Other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
 * Never add an extra whitespace or break within a line.
 * Method may be single line only if there are no statements in the method body.
-* Block's opening brace should always be on the line with block's cap ^.
+* Block's opening brace should always be on the line with block's caret ^.
+
 
 **Preferred:**
 ```objc
-if (user.isHappy) {
-  self.passwordReady = ^(NSString *password) {
-    //Do something
-  };
-} else {
-  foo = bar;
-  fooBarBaz = baz;
-  met = quaax;
+- (void)someMethod
+{
+  if (user.isHappy) {
+    self.passwordReady = ^(NSString *password) {
+      //Do something
+    };
+  } else {
+    foo = bar;
+    fooBarBaz = baz;
+    met = quaax;
+  }
 }
 ```
 
 **Not Preferred:**
 ```objc
-if (user.isHappy)
-{
-    self.passwordReady =
-    ^(NSString *password) {
-      //Do something
-    };
-    
-    self.passwordReady = ^(NSString *password) 
-    {
-      //Do something
-    };
-}
-else {
-    foo       = bar;
-    fooBarBaz = baz;
-    met       = quaax;
+- (void)someMethod {
+  if (user.isHappy)
+  {
+      self.passwordReady =
+      ^(NSString *password) {
+        //Do something
+      };
+      
+      self.passwordReady = ^(NSString *password) 
+      {
+        //Do something
+      };
+  }
+  else {
+      foo       = bar;
+      fooBarBaz = baz;
+      met       = quaax;
+  }
 }
 ```
 
@@ -404,7 +408,7 @@ static CGFloat const RWTImageThumbnailHeight = 50.0;
 
 When using `enum`s, it is recommended to use the new fixed underlying type specification because it has stronger type checking and code completion. The SDK now includes a macro to facilitate and encourage use of fixed underlying types: `NS_ENUM()`
 
-Enum value names should always start with enum type name.
+Enum value names should always start with enum type name, otherwise Swift compatibility may suffer.
 
 **For Example:**
 
@@ -430,9 +434,9 @@ typedef NS_ENUM(NSInteger, RWTGlobalConstants) {
 **Not Preferred:**
 ```objc
 typedef NS_ENUM(NSInteger, RWTLeftMenuTopItem) {
-TopItemMain,
-TopItemShows,
-TopItemSchedule
+  TopItemMain,
+  TopItemShows,
+  TopItemSchedule
 };
 ```
 
@@ -601,7 +605,8 @@ result = a > b ? x = c > d ? c : d : y;
 Init methods should follow the convention provided by Apple's generated code template.  A return type of 'instancetype' should also be used instead of 'id'.
 
 ```objc
-- (instancetype)init {
+- (instancetype)init 
+{
   self = [super init];
   if (self) {
     // ...
@@ -661,7 +666,8 @@ When coding with conditionals, the left hand margin of the code should be the "g
 **Preferred:**
 
 ```objc
-- (void)someMethod {
+- (void)someMethod 
+{
   if (![someOther boolValue]) {
 	return;
   }
@@ -673,7 +679,8 @@ When coding with conditionals, the left hand margin of the code should be the "g
 **Not Preferred:**
 
 ```objc
-- (void)someMethod {
+- (void)someMethod 
+{
   if ([someOther boolValue]) {
     //Do something important
   }
@@ -708,7 +715,8 @@ Some of Apple’s APIs write garbage values to the error parameter (if non-NULL)
 
 Singleton objects should use a thread-safe pattern for creating their shared instance.
 ```objc
-+ (instancetype)sharedInstance {
++ (instancetype)sharedInstance 
+{
   static id sharedInstance = nil;
 
   static dispatch_once_t onceToken;
@@ -722,46 +730,17 @@ Singleton objects should use a thread-safe pattern for creating their shared ins
 This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.blogspot.com/2011/04/singletons-your-doing-them-wrong.html).
 
 
-## Line Breaks
-
-Line breaks are an important topic since this style guide is focused for print and online readability.
-
-For example:
-```objc
-self.productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers];
-```
-A long line of code like this should be carried on to the second line adhering to this style guide's Spacing section (two spaces).
-```objc
-self.productsRequest = [[SKProductsRequest alloc] 
-  initWithProductIdentifiers:productIdentifiers];
-```
-
-
-## Smiley Face
-
-Smiley faces are a very prominent style feature of the raywenderlich.com site!  It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic.  The end square bracket is used because it represents the largest smile able to be captured using ascii art.  A half-hearted smile is represented if an end parenthesis is used, and thus not preferred.
-
-**Preferred:**
-```objc
-:]
-```
-
-**Not Preferred:**
-```objc
-:)
-```  
-
-
 ## Xcode project
 
 The physical files should be kept in sync with the Xcode project files in order to avoid file sprawl. Any Xcode groups created should be reflected by folders in the filesystem. Code should be grouped not only by type, but also by feature for greater clarity.
+
 
 When possible, always turn on "Treat Warnings as Errors" in the target's Build Settings and enable as many [additional warnings](http://boredzo.org/blog/archives/2009-11-07/warnings) as possible. If you need to ignore a specific warning, use [Clang's pragma feature](http://clang.llvm.org/docs/UsersManual.html#controlling-diagnostics-via-pragmas).
 
 # Other Objective-C Style Guides
 
 If ours doesn't fit your tastes, have a look at some other style guides:
-
+* [The official raywenderlich.com Objective-C style guide](https://github.com/raywenderlich/objective-c-style-guide)
 * [Robots & Pencils](https://github.com/RobotsAndPencils/objective-c-style-guide)
 * [New York Times](https://github.com/NYTimes/objective-c-style-guide)
 * [Google](http://google-styleguide.googlecode.com/svn/trunk/objcguide.xml)
