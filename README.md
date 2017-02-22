@@ -58,6 +58,8 @@ Here are some of the documents from Apple that informed the style guide. If some
 
 US English should be used.
 
+Comments may be in Russian.
+
 **Preferred:**
 ```objc
 UIColor *myColor = [UIColor whiteColor];
@@ -71,10 +73,10 @@ UIColor *myColour = [UIColor whiteColor];
 
 ## Code Organization
 
-Use `#pragma mark -` to categorize methods in functional groupings and protocol/delegate implementations following this general structure.
+Use `// MARK:` to categorize methods in functional groupings and protocol/delegate implementations following this general structure.
 
 ```objc
-#pragma mark - Lifecycle
+// MARK: Lifecycle
 
 - (instancetype)init {}
 - (void)dealloc {}
@@ -82,33 +84,33 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 - (void)viewWillAppear:(BOOL)animated {}
 - (void)didReceiveMemoryWarning {}
 
-#pragma mark - Custom Accessors
+// MARK: Custom Accessors
 
 - (void)setCustomProperty:(id)value {}
 - (id)customProperty {}
 
-#pragma mark - IBActions
+// MARK: IBActions
 
 - (IBAction)submitData:(id)sender {}
 
-#pragma mark - Public
+// MARK: Public
 
 - (void)publicMethod {}
 
-#pragma mark - Private
+// MARK: Private
 
 - (void)privateMethod {}
 
-#pragma mark - Protocol conformance
-#pragma mark - UITextFieldDelegate
-#pragma mark - UITableViewDataSource
-#pragma mark - UITableViewDelegate
+// MARK: Protocol conformance
+// MARK: UITextFieldDelegate
+// MARK: UITableViewDataSource
+// MARK: UITableViewDelegate
 
-#pragma mark - NSCopying
+// MARK: NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {}
 
-#pragma mark - NSObject
+// MARK: NSObject
 
 - (NSString *)description {}
 ```
@@ -116,14 +118,22 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 ## Spacing
 
 * Indent using 2 spaces (this conserves space in print and makes line wrapping less likely). Never indent with tabs. Be sure to set this preference in Xcode.
-* Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
+* Method braces always open on next line to visually distinguish method body.
+* Other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
+* Never add an extra whitespace or break within a line.
+* Method may be single line only if there are no statements in the method body.
+* Block's opening brace should always be on the line with block's cap ^.
 
 **Preferred:**
 ```objc
 if (user.isHappy) {
-  //Do something
+  self.passwordReady = ^(NSString *password) {
+    //Do something
+  };
 } else {
-  //Do something else
+  foo = bar;
+  fooBarBaz = baz;
+  met = quaax;
 }
 ```
 
@@ -131,10 +141,20 @@ if (user.isHappy) {
 ```objc
 if (user.isHappy)
 {
-    //Do something
+    self.passwordReady =
+    ^(NSString *password) {
+      //Do something
+    };
+    
+    self.passwordReady = ^(NSString *password) 
+    {
+      //Do something
+    };
 }
 else {
-    //Do something else
+    foo       = bar;
+    fooBarBaz = baz;
+    met       = quaax;
 }
 ```
 
@@ -233,6 +253,7 @@ Local variables should not contain underscores.
 In method signatures, there should be a space after the method type (-/+ symbol). There should be a space between the method segments (matching Apple's style).  Always include a keyword and be descriptive with the word before the argument which describes the argument.
 
 The usage of the word "and" is reserved.  It should not be used for multiple parameters as illustrated in the `initWithWidth:height:` example below.
+Don't use "with" prefix for multiple arguments.
 
 **Preferred:**
 ```objc
@@ -250,6 +271,7 @@ The usage of the word "and" is reserved.  It should not be used for multiple par
 - (id)taggedView:(NSInteger)tag;
 - (instancetype)initWithWidth:(CGFloat)width andHeight:(CGFloat)height;
 - (instancetype)initWith:(int)width and:(int)height;  // Never do this.
+- (instancetype)initWithWidth:(CGFloat)width withHeight:(CGFloat)height withDepth:(CGFloat)depth;
 ```
 
 ## Variables
@@ -320,9 +342,11 @@ Dot syntax is purely a convenient wrapper around accessor method calls. When you
 
 Dot-notation should **always** be used for accessing and mutating properties, as it makes code more concise. Bracket notation is preferred in all other instances.
 
+If a property is declared as a property in class interface, use dot notation. This does not apply to class properties, since Xcode does not autocomplete them. 
+
 **Preferred:**
 ```objc
-NSInteger arrayCount = [self.array count];
+NSInteger arrayCount = self.array.count;
 view.backgroundColor = [UIColor orangeColor];
 [UIApplication sharedApplication].delegate;
 ```
@@ -380,10 +404,12 @@ static CGFloat const RWTImageThumbnailHeight = 50.0;
 
 When using `enum`s, it is recommended to use the new fixed underlying type specification because it has stronger type checking and code completion. The SDK now includes a macro to facilitate and encourage use of fixed underlying types: `NS_ENUM()`
 
+Enum value names should always start with enum type name.
+
 **For Example:**
 
 ```objc
-typedef NS_ENUM(NSInteger, RWTLeftMenuTopItemType) {
+typedef NS_ENUM(NSInteger, RWTLeftMenuTopItem) {
   RWTLeftMenuTopItemMain,
   RWTLeftMenuTopItemShows,
   RWTLeftMenuTopItemSchedule
@@ -394,10 +420,19 @@ You can also make explicit value assignments (showing older k-style constant def
 
 ```objc
 typedef NS_ENUM(NSInteger, RWTGlobalConstants) {
-  RWTPinSizeMin = 1,
-  RWTPinSizeMax = 5,
-  RWTPinCountMin = 100,
-  RWTPinCountMax = 500,
+  RWTGlobalConstantsPinSizeMin = 1,
+  RWTGlobalConstantsPinSizeMax = 5,
+  RWTGlobalConstantsPinCountMin = 100,
+  RWTGlobalConstantsPinCountMax = 500,
+};
+```
+
+**Not Preferred:**
+```objc
+typedef NS_ENUM(NSInteger, RWTLeftMenuTopItem) {
+TopItemMain,
+TopItemShows,
+TopItemSchedule
 };
 ```
 
