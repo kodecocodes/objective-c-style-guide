@@ -121,9 +121,9 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 **Preferred:**
 ```objc
 if (user.isHappy) {
-  //Do something
+  // Do something
 } else {
-  //Do something else
+  // Do something else
 }
 ```
 
@@ -131,10 +131,10 @@ if (user.isHappy) {
 ```objc
 if (user.isHappy)
 {
-    //Do something
+    // Do something
 }
 else {
-    //Do something else
+    // Do something else
 }
 ```
 
@@ -631,7 +631,7 @@ When coding with conditionals, the left hand margin of the code should be the "g
 	return;
   }
 
-  //Do something important
+  // Do something important
 }
 ```
 
@@ -640,7 +640,7 @@ When coding with conditionals, the left hand margin of the code should be the "g
 ```objc
 - (void)someMethod {
   if ([someOther boolValue]) {
-    //Do something important
+    // Do something important
   }
 }
 ```
